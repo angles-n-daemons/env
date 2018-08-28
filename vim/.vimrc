@@ -29,4 +29,4 @@ if executable('ag')
 endif
 
 " NERDTree
-autocmd vimenter * NERDTree
+autocmd VimEnter * if argc() == 0 | NERDTree | endif
