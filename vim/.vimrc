@@ -13,7 +13,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 
 " ctrl-p
-Plug 'ctrlpvim/ctrlp'
+Plug 'ctrlpvim/ctrlp.vim'
 
 call plug#end()
 
