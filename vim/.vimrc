@@ -1,3 +1,6 @@
+" Must have
+:nmap ; :
+
 " PLUGINS
 "
 " set plugin location
@@ -30,3 +33,4 @@ endif
 
 " NERDTree
 autocmd VimEnter * if argc() == 0 | NERDTree | endif
+
