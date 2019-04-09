@@ -34,3 +34,12 @@ endif
 " NERDTree
 autocmd VimEnter * if argc() == 0 | NERDTree | endif
 
+" highlight line in active window
+hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+set nocursorline
+
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup END
