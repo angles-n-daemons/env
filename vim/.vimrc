@@ -32,7 +32,7 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|build|venv)|(\.(swp|ico|git|svn))$'
 let g:ctrlp_max_files=0
 
 " NERDTree
