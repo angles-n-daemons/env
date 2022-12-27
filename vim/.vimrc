@@ -22,6 +22,7 @@ call plug#end()
 
 echo 'YouCompleteMe not installed. Install and comment out echo in vimrc'
 
+" ctrlp extras
 if executable('ag')
   " Use ag over grep
   let g:ackprg = 'ag --vimmgrep'
@@ -30,6 +31,9 @@ if executable('ag')
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
+
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
+let g:ctrlp_max_files=0
 
 " NERDTree
 autocmd VimEnter * if argc() == 0 | NERDTree | endif
