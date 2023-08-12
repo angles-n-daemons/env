@@ -20,8 +20,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 call plug#end()
 
-echo 'YouCompleteMe not installed. Install and comment out echo in vimrc'
-
 " ctrlp extras
 if executable('ag')
   " Use ag over grep
@@ -48,6 +46,11 @@ augroup CursorLine
   au WinLeave * setlocal nocursorline
 augroup END
 
+colorscheme afterglow
+
+" search highlighting
+set hlsearch
+
 " pane jumping
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -58,5 +61,5 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <silent> = :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
 
-nnoremap <silent> + :exe "30winc >"<CR>
-nnoremap <silent> _ :exe "30winc <"<CR>
+" copy to system clipboard
+vnoremap <C-c> :w !pbcopy<CR><CR>
