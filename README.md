@@ -9,29 +9,28 @@ This is the untested development setup environment for OSX.
  - Install command line packages in the [packages file](os-packages) one by one
  - Setup zsh
    - Install oh my zsh
-     -`./zsh/install-oh-my-zsh.sh`
+     - `./zsh/install-oh-my-zsh.sh`
    - Copy the zsh extras over to the new zshrc
-     -`cat ./zsh/.zshrc-extras >> ~/.zshrc`
+     - `cat ./zsh/.zshrc-extras >> ~/.zshrc`
    - Look over the zshrc
      - `vim ~/.zshrc`
  - Setup vim
    - Copy the vimrc
      - `cp ./vim/.vimrc ~/.vimrc`
    - Install vim plug
-     - `./vim/install-plug.sh"
+     - `./vim/install-plug.sh`
    - Install vim plugins
      - `vim`
      - `:PlugInstall`
    - Add YouCompleteMe (optional)
  - Setup tmux
-   - copy tmux configuration
+   - Copy the tmux configuration
      - `cp ./tmux/.tmux.conf ~/.tmux.conf`
  - Setup git
    - Copy gitconfig
      - `cp ./.gitconfig ~/.gitconfig`
  - Setup ttyd
    - Setup launchd configuration for ttyd
-     - `cp osx/LaunchAgents/ttyd.plist ~/Library/LaunchAgents/ttyd.plist`
      - `cp ./osx/LaunchAgents/ttyd.plist ~/Library/LaunchAgents/ttyd.plist`
      - `launchctl load ~/Library/LaunchAgents/ttyd.plist`
      - `launchctl start com.godzilla.ttyd`
