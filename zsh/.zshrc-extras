@@ -7,3 +7,10 @@ alias tns='tmux new -s'
 
 alias weather='curl wttr.in/newyork'
 
+# run fortune
+fortune
+
+# copy to mac clipboard
+function copy() {
+	echo "$1" | pbcopy
+}

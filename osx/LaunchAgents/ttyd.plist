@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+
+<plist version="1.0">
+
+<dict>
+
+    <key>Label</key>
+
+    <string>com.godzilla.ttyd</string>
+
+    <key>ProgramArguments</key>
+
+    <array>
+
+        <string>/usr/local/bin/ttyd</string>
+
+        <string>-i</string>
+
+        <string>127.0.0.1</string>
+
+        <string>/bin/zsh</string>
+
+    </array>
+
+    <key>StandardOutPath</key>
+
+    <string>/tmp/log/godzillattyd.log</string>
+
+    <key>StandardErrorPath</key>
+
+    <string>/tmp/log/godzillattyd.log</string>
+
+</dict>
+
+</plist>

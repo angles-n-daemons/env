@@ -1,11 +1,15 @@
-" Must have
+" remap semicolon to colon
 :nmap ; :
+
+" colorscheme
+colorscheme afterglow
+
+
 
 " PLUGINS
 "
 " set plugin location
 call plug#begin('~/.vim/plugged')
-
 " NerdTREE
 Plug 'scrooloose/nerdtree'
 
@@ -18,7 +22,14 @@ Plug 'vim-airline/vim-airline'
 " ctrl-p
 Plug 'ctrlpvim/ctrlp.vim'
 
+" language client
+Plug 'dense-analysis/ale'
+
+" NOTE: consider installing YouCompleteMe
+
 call plug#end()
+
+
 
 " ctrlp extras
 if executable('ag')
@@ -30,11 +41,13 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|build|venv)|(\.(swp|ico|git|svn))$'
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|build|venv|DS_Store)|(\.(swp|ico|git|svn))$'
 let g:ctrlp_max_files=0
 
 " NERDTree
 autocmd VimEnter * if argc() == 0 | NERDTree | endif
+
+
 
 " highlight line in active window
 hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
@@ -46,10 +59,13 @@ augroup CursorLine
   au WinLeave * setlocal nocursorline
 augroup END
 
-colorscheme afterglow
-
 " search highlighting
 set hlsearch
+
+" highlight column 80
+set colorcolumn=80
+
+
 
 " pane jumping
 nnoremap <C-J> <C-W><C-J>
@@ -63,3 +79,6 @@ nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
 
 " copy to system clipboard
 vnoremap <C-c> :w !pbcopy<CR><CR>
+
+
+" language specific settings below

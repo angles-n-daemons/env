@@ -6,4 +6,5 @@ zsh
 git
 vim
 tmux
-
+ttyd
+fortune
