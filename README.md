@@ -1,6 +1,6 @@
 # Environment Setup for OSX
 
-This is the untested development setup environment for OSX.
+This is my untested development environment setup for OSX.
 
  - Install xcode command line tools
    - `xcode-select install`
