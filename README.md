@@ -28,7 +28,7 @@ This is my untested development environment setup for OSX.
      - `cp ./tmux/.tmux.conf ~/.tmux.conf`
  - Setup git
    - Copy gitconfig
-     - `cp ./.gitconfig ~/.gitconfig`
+     - `cp ./git/.gitconfig ~/.gitconfig`
  - Setup ttyd
    - Setup launchd configuration for ttyd
      - `cp ./osx/LaunchAgents/ttyd.plist ~/Library/LaunchAgents/ttyd.plist`
