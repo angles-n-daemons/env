@@ -67,6 +67,13 @@ set colorcolumn=80
 
 
 
+" tab navigation bindings
+
+nnoremap tn  :tabnext<Space>
+
+" backspace over newlines and indents
+:set backspace=indent,eol,start
+
 " pane jumping
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -79,6 +86,7 @@ nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
 
 " copy to system clipboard
 vnoremap <C-c> :w !pbcopy<CR><CR>
+
 
 
 " language specific settings below
