@@ -27,6 +27,8 @@ This is my untested development environment setup for OSX.
    - Copy the tmux configuration
      - `cp ./tmux/.tmux.conf ~/.tmux.conf`
  - Setup git
+   - Copy gitignore
+     - `cp ./git/.gitignore ~/.gitignore`
    - Copy gitconfig
      - `cp ./git/.gitconfig ~/.gitconfig`
  - Setup ttyd

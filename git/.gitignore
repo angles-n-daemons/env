@@ -1,0 +1,6 @@
+### Vim Configuration ###
+# Ignore editor swap files
+*.sw[klmnop]
+
+# Ignore debug configurations for local development
+.vimspector.json
