@@ -32,6 +32,11 @@
 
     <string>/tmp/log/godzillattyd.log</string>
 
+    <key>WorkingDirectory</key>
+
+    <string>/Users/CHANGEME</string>
+
+
 </dict>
 
 </plist>

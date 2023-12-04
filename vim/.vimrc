@@ -22,10 +22,12 @@ Plug 'vim-airline/vim-airline'
 " ctrl-p
 Plug 'ctrlpvim/ctrlp.vim'
 
-" language client
-Plug 'dense-analysis/ale'
+" coc vim
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" NOTE: consider installing YouCompleteMe
+" vimspector
+Plug 'puremourning/vimspector'
+
 
 call plug#end()
 
@@ -48,6 +50,71 @@ let g:ctrlp_max_files=0
 autocmd VimEnter * if argc() == 0 | NERDTree | endif
 
 
+" vimspector settings
+let g:vimspector_enable_mappings = 'HUMAN'
+noremap <F2> :VimspectorReset<CR>
+
+
+" coc configuration ----
+set encoding=utf-8
+set updatetime=300
+set signcolumn=yes
+" complete with tab
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+" Use <c-space> to trigger completion
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+" GoTo code navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" Use K to show documentation in preview window
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+" Highlight the symbol and its references when holding the cursor
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code
+xmap <leader>f :call CocActionAsync('format')
+
+" Applying code actions to the selected code block
+" " Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying refactor code actions
+nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
+
+" Run the Code Lens action on the current line
+nmap <leader>cl  <Plug>(coc-codelens-action)
+" coc configuration ----
+
+
 
 " highlight line in active window
 hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
@@ -64,8 +131,6 @@ set hlsearch
 
 " highlight column 80
 set colorcolumn=80
-
-
 
 " tab navigation bindings
 
@@ -84,8 +149,8 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <silent> = :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
 
-" copy to system clipboard
-vnoremap <C-c> :w !pbcopy<CR><CR>
+
+
 
 
 
