@@ -34,6 +34,8 @@ This is my untested development environment setup for OSX.
  - Setup ttyd
    - Setup launchd configuration for ttyd
      - `cp ./osx/LaunchAgents/ttyd.plist ~/Library/LaunchAgents/ttyd.plist`
+     - Edit the Working Directory in the plist file:
+       - `vi ~/Library/LaunchAgents/ttyd.plist`
      - `launchctl load ~/Library/LaunchAgents/ttyd.plist`
      - `launchctl start com.godzilla.ttyd`
  - Install [Arc browser](https://arc.net/)
