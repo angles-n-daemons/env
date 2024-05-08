@@ -1,12 +1,3 @@
-alias stop-it='f(){ lsof -i:"$@" | awk '"'"'{ print $2 }'"'"' | tail -n 1 | xargs kill;  unset -f f; }; f'
-
-# tmux shortcuts
-alias ta='tmux attach -t'
-alias tls='tmux list-sessions'
-alias tns='tmux new -s'
-
-alias weather='curl wttr.in/newyork'
-
 # run fortune
 fortune
 
@@ -14,3 +5,5 @@ fortune
 function copy() {
 	echo "$1" | pbcopy
 }
+
+source ~/.aliases

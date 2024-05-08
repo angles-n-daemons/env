@@ -1,0 +1,12 @@
+alias twarn-dev="tmux select-pane -P 'bg=#00074a'"
+alias twarn-prod="tmux select-pane -P 'bg=#3b0002'"
+
+alias stop-it='f(){ lsof -i:"$@" | awk '"'"'{ print $2 }'"'"' | tail -n 1 | xargs kill;  unset -f f; }; f'
+
+# tmux shortcuts
+alias ta='tmux attach -t'
+alias tls='tmux list-sessions'
+alias tns='tmux new -s'
+alias tp='tmuxp load'
+
+alias weather='curl wttr.in/newyork'

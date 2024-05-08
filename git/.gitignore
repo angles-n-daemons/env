@@ -4,3 +4,6 @@
 
 # Ignore debug configurations for local development
 .vimspector.json
+
+# Ignore tmux project configurations
+.tmuxp.yaml

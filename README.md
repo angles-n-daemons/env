@@ -10,6 +10,8 @@ This is my untested development environment setup for OSX.
  - Setup zsh
    - Install oh my zsh
      - `./zsh/install-oh-my-zsh.sh`
+   - Copy your aliases
+     - `cp ./zsh/.aliases ~/.aliases`
    - Copy the zsh extras over to the new zshrc
      - `cat ./zsh/.zshrc-extras >> ~/.zshrc`
    - Look over the zshrc
