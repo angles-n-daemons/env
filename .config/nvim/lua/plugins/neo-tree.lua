@@ -30,22 +30,22 @@ return {
   },
   keys = {
     {
-      '<leader>ee',
+      '<leader>e',
       exploreCwd,
       desc = 'Explorer NeoTree (cwd)',
     },
     {
-      '<leader>ef',
+      '<leader>fe',
       exploreFileDir,
       desc = 'Explorer NeoTree (cwd)',
     },
     {
-      '<leader>eg',
+      '<leader>ge',
       exploreGit,
       desc = 'Git Explorer',
     },
     {
-      '<leader>eb',
+      '<leader>be',
       exploreBuffers,
       desc = 'Buffer Explorer',
     },

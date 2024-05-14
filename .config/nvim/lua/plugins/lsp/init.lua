@@ -1,3 +1,11 @@
+local telescope = require('plugins.util.telescope')
+
+local function mapLsp(event)
+  return function(mode, keys, func, desc)
+    vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+  end
+end
+
 return {
   {
     'neovim/nvim-lspconfig',
@@ -16,11 +24,15 @@ return {
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
         callback = function(event)
-          local map = function(keys, func, desc)
-            vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
-          end
-          map('K', vim.lsp.buf.hover, 'Hover Documentation')
-          map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+          local map = mapLsp(event)
+          map('n', 'K', vim.lsp.buf.hover, 'Hover Documentation')
+          map('n', 'gd', telescope('lsp_definitions', { reuse_win = true }), '[G]oto [D]efinition')
+          map('n', 'gr', '<cmd>Telescope lsp_references<cr>', 'References')
+          map('n', 'gI', telescope('lsp_implementations', { reuse_win = true }), '[G]oto [I]mplementation')
+          map('n', 'gy', telescope('lsp_type_definitions', { reuse_win = true }), '[G]oto T[y]pe Definitions')
+          map('n', 'gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+          map('n', '<leader>K', vim.lsp.buf.signature_help, 'Signature Help')
+          map('i', '<C-k>', vim.lsp.buf.signature_help, 'Signature Help')
         end
       })
       require('neodev').setup({})
@@ -31,7 +43,7 @@ return {
             require('lspconfig')[server_name].setup {}
         end,
       })
-      -- TODO: possibly tear away handlers when detaching, though not sure if that's a real use case
+      -- TODO: possibly tear away handlers when detaching, kickstart seems to only do that for autocmds
     end,
   },
   {
