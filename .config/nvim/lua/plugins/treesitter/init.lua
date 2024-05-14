@@ -38,27 +38,16 @@ return {
           },
           move = {
             enable = true,
-            keymaps = {
-              ["if"] = "@function.inner",
-              ["af"] = "@function.outer",
-              ["ic"] = "@class.inner",
-              ["ac"] = "@class.outer",
-              ["ib"] = "@block.inner",
-              ["ab"] = "@block.outer",
+            set_jumps = true, -- whether to set jumps in the jumplist
+            goto_next_start = {
+              ["]f"] = "@function.outer",
+            },
+            goto_previous_start = {
+              ["[f"] = "@function.outer",
             }
           },
         },
       })
-      -- what are the things that I want to try to configure
-      -- lazyvim seems to have a number of overrides:
-      --  - lots of languages ensure installed
-      --  - incremental selection
-      --  - text object configuration
-
-      -- What will I use treesitter for?
-      -- - syntax highlighting (ideally beyond the lsp?)
-      -- - text objects
-      -- - possible lsp interop
     end,
   },
   {
