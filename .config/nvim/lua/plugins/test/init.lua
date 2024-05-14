@@ -9,6 +9,11 @@ return {
   },
   keys = {
     {
+      '<leader>tt',
+      function() require('neotest').run.run() end,
+      desc = 'Run Nearest'
+    },
+    {
       '<leader>tf',
       function() require('neotest').run.run(vim.fn.expand('%')) end,
       desc = 'Run File'
@@ -17,11 +22,6 @@ return {
       '<leader>tp',
       function() require('neotest').run.run(vim.loop.cwd()) end,
       desc = 'Run All Test Files'
-    },
-    {
-      '<leader>tt',
-      function() require('neotest').run.run() end,
-      desc = 'Run Nearest'
     },
     {
       '<leader>ts',
