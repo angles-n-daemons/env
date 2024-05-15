@@ -1,4 +1,5 @@
 local telescope = require('plugins.util.telescope')
+local languages = require('config.languages')
 
 local function mapLsp(event)
   return function(mode, keys, func, desc)
@@ -13,8 +14,8 @@ return {
     dependencies = {
       { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
+      'williamboman/mason-tool-installer.nvim',
       { 'folke/neodev.nvim', opts = {} },
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
     },
     keys = {
       ['<leader>cl'] = { '<cmd>LspInfo<cr>', 'Lsp Info' },
@@ -37,10 +38,25 @@ return {
       })
       require('neodev').setup({})
       require('mason').setup()
-      require('mason-lspconfig').setup()
+      local ensure_installed = {}
+      for lang, config in pairs(languages.config) do
+        i = #ensure_installed
+        ensure_installed[i + 1] = config.lsp
+        ensure_installed[i + 2] = config.formatter
+      end
+      -- install tools from personal language configuration
+      require('mason-tool-installer').setup({
+        ensure_installed = ensure_installed,
+        auto_update = true,
+      })
+      -- automatically configure nvim-lspconfig
+      require('mason-lspconfig').setup({
+        automatic_installation = true,
+      })
+      -- setup the installed lsps
       require('mason-lspconfig').setup_handlers({
         function (server_name) -- default handler (optional)
-            require('lspconfig')[server_name].setup {}
+          require('lspconfig')[server_name].setup {}
         end,
       })
       -- TODO: possibly tear away handlers when detaching, kickstart seems to only do that for autocmds
