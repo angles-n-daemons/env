@@ -7,7 +7,7 @@ local config = {
     lsp = 'tsserver',
     -- dap = 'js-debug-adapter',
     -- linter = ''
-    formatter = 'prettier',
+    formatter = 'eslint_d',
     test = {
       repo = 'nvim-neotest/neotest-jest',
       getAdapter = function()
@@ -17,6 +17,10 @@ local config = {
       end
     },
   },
+  css = { formatter = "prettier" },
+  html = { formatter = "prettier" },
+  json = { formatter = "prettier" },
+  javascriptreact = { formatter = "prettier" },
 }
 
 return config
