@@ -6,13 +6,17 @@ local config = {
   javascript = {
     lsp = 'tsserver',
     -- dap = 'js-debug-adapter',
+    -- linter = ''
     formatter = 'prettier',
-  },
-  typescript = {
-    lsp = 'tsserver',
-    -- dap = 'js-debug-adapter',
-    formatter = 'prettier',
+    test = {
+      repo = 'nvim-neotest/neotest-jest',
+      getAdapter = function()
+        return require('neotest-jest')({
+          jestCommand = "npm test --",
+        })
+      end
+    },
   },
 }
 
-return { config = config }
+return config

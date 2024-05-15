@@ -39,10 +39,9 @@ return {
       require('neodev').setup({})
       require('mason').setup()
       local ensure_installed = {}
-      for lang, config in pairs(languages.config) do
-        i = #ensure_installed
-        ensure_installed[i + 1] = config.lsp
-        ensure_installed[i + 2] = config.formatter
+      for _, config in pairs(languages) do
+        table.insert(ensure_installed, config.lsp)
+        table.insert(ensure_installed, config.formatter)
       end
       -- install tools from personal language configuration
       require('mason-tool-installer').setup({

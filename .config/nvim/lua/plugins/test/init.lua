@@ -1,12 +1,24 @@
-return {
-  'nvim-neotest/neotest',
-  dependencies = {
+local languages = require('config.languages')
+local function getDependencies(languages)
+  -- base dependencies for nvim-neotest
+  local dependencies = {
     'nvim-neotest/nvim-nio',
     'nvim-lua/plenary.nvim',
     'antoinemadec/FixCursorHold.nvim',
     'nvim-treesitter/nvim-treesitter',
-    -- 'nvim-neotest/neotest-jest',
-  },
+  }
+  -- add additional language dependencies (ie neotest-jest)
+  for _, config in pairs(languages) do
+    if (config.test ~= nil) then
+      table.insert(dependencies, config.test.repo)
+    end
+  end
+  return dependencies
+end
+
+return {
+  'nvim-neotest/neotest',
+  dependencies = getDependencies(languages),
   keys = {
     {
       '<leader>tt',
@@ -45,12 +57,14 @@ return {
     },
   },
   config = function()
+    local adapters = {}
+    for _, config in pairs(languages) do
+      if (config.test ~= nil) then
+        table.insert(adapters, config.test.getAdapter())
+      end
+    end
     require('neotest').setup({
-      adapters = {
-        -- require('neotest-jest')({
-        --   jestCommand = "npm test --",
-        -- }),
-      },
+      adapters = adapters,
       quickfix = {
         enabled = false,
         open = false,
