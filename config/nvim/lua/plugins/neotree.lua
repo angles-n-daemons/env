@@ -2,6 +2,10 @@ local exploreCwd = function()
   require('neo-tree.command').execute { toggle = true, dir = vim.uv.cwd() }
 end
 
+local exploreCurrentFileDir = function()
+  require('neo-tree.command').execute { toggle = true, reveal = true, dir = vim.uv.cwd() }
+end
+
 local exploreFileDir = function()
   local fileDir = vim.cmd 'echo expand("%:p:h")'
   require('neo-tree.command').execute { toggle = true, dir = fileDir }
@@ -32,6 +36,11 @@ return {
     {
       '<leader>e',
       exploreCwd,
+      desc = 'Explorer NeoTree (cwd)',
+    },
+    {
+      '<leader>fr',
+      exploreCurrentFileDir,
       desc = 'Explorer NeoTree (cwd)',
     },
     {
