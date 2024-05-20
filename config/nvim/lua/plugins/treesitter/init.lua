@@ -1,5 +1,5 @@
 local function toggleContext()
-  local tsc = require('treesitter-context')
+  local tsc = require 'treesitter-context'
   tsc.toggle()
 end
 
@@ -23,31 +23,40 @@ return {
     },
     config = function(_, _)
       ---@diagnostic disable-next-line: missing-fields
-      require('nvim-treesitter.configs').setup({
+      require('nvim-treesitter.configs').setup {
         textobjects = {
           select = {
             enable = true,
             keymaps = {
-              ["if"] = "@function.inner",
-              ["af"] = "@function.outer",
-              ["ic"] = "@class.inner",
-              ["ac"] = "@class.outer",
-              ["ib"] = "@block.inner",
-              ["ab"] = "@block.outer",
-            }
+              ['if'] = '@function.inner',
+              ['af'] = '@function.outer',
+              ['ic'] = '@class.inner',
+              ['ac'] = '@class.outer',
+              ['ib'] = '@block.inner',
+              ['ab'] = '@block.outer',
+            },
           },
           move = {
             enable = true,
             set_jumps = true, -- whether to set jumps in the jumplist
             goto_next_start = {
-              ["]f"] = "@function.outer",
+              [']f'] = '@function.outer',
             },
             goto_previous_start = {
-              ["[f"] = "@function.outer",
-            }
+              ['[f'] = '@function.outer',
+            },
           },
         },
-      })
+        incremental_selection = {
+          enable = true,
+          keymaps = {
+            init_selection = '<cr>',
+            node_incremental = '.',
+            node_decremental = ',',
+            scope_incremental = 'grc',
+          },
+        },
+      }
     end,
   },
   {
@@ -64,6 +73,6 @@ return {
     },
     config = function()
       require('treesitter-context').enable()
-    end
-  }
+    end,
+  },
 }

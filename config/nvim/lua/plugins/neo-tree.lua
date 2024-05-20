@@ -1,18 +1,18 @@
 local exploreCwd = function()
-  require('neo-tree.command').execute({ toggle = true, dir = vim.uv.cwd() })
+  require('neo-tree.command').execute { toggle = true, dir = vim.uv.cwd() }
 end
 
 local exploreFileDir = function()
-  local fileDir = vim.cmd('echo expand("%:p:h")')
-  require('neo-tree.command').execute({ toggle = true, dir = fileDir })
+  local fileDir = vim.cmd 'echo expand("%:p:h")'
+  require('neo-tree.command').execute { toggle = true, dir = fileDir }
 end
 
 local exploreGit = function()
-  require('neo-tree.command').execute({ source = 'git_status', toggle = true })
+  require('neo-tree.command').execute { source = 'git_status', toggle = true }
 end
 
 local exploreBuffers = function()
-  require('neo-tree.command').execute({ source = 'buffers', toggle = true })
+  require('neo-tree.command').execute { source = 'buffers', toggle = true }
 end
 
 -- <bs> - navigates working directory up
@@ -67,5 +67,5 @@ return {
   config = function(_, _)
     -- TODO: when file is moved, update the lsp like lazy does
     -- TODO: when lazygit closes, update the git status of the tree
-  end
+  end,
 }
