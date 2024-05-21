@@ -35,50 +35,37 @@ return { -- Autocompletion
           luasnip.lsp_expand(args.body)
         end,
       },
+      experimental = { ghost_text = true },
       completion = { completeopt = 'menu,menuone,noinsert' },
+      updateevents = 'TextChanged,TextChangedi',
 
       -- For an understanding of why these mappings were
       -- chosen, you will need to read `:help ins-completion`
-      --
       -- No, but seriously. Please read `:help ins-completion`, it is really good!
       mapping = cmp.mapping.preset.insert {
-        -- Select the [n]ext item
-        ['<C-n>'] = cmp.mapping.select_next_item(),
-        -- Select the [p]revious item
+        -- scroll options
+        ['<C-j>'] = cmp.mapping.select_next_item(),
         ['<C-p>'] = cmp.mapping.select_prev_item(),
-
-        -- Scroll the documentation window [b]ack / [f]orward
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        -- ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
 
+        -- confirm / cancel
         ['<CR>'] = cmp.mapping.confirm { select = true },
-        ['<C-else'] = cmp.mapping {
+        ['<C-e'] = cmp.mapping {
           i = cmp.mapping.abort(),
           c = cmp.mapping.close(),
         },
         -- Manually trigger a completion from nvim-cmp.
-        --  Generally you don't need this, because nvim-cmp will display
-        --  completions whenever it has completion options available.
-        ['<C-Space>'] = cmp.mapping.complete {},
+        --['<C-b>'] = cmp.mapping.complete {},
 
-        -- possibly override tab to:
-        -- - select next item
-        -- - expand section
-        -- - go to next
-        ['<Tab>'] = nil,
-        ['<S-Tab>'] = nil,
-
-        -- TODO: in snippets expansion locations are where you fill in the text
-        -- I need to figure out if these keybindings conflict, if they do I'll have to devise a different way to handle them
-        -- Tab might be a good start, ctrl tab might be another good start
-        -- Does it need to be in insert mode?
+        -- Navigate snippets
         ['<C-l>'] = cmp.mapping(function()
-          if luasnip.expand_or_locally_jumpable() then
+          if luasnip.expand_or_jumpable() then
             luasnip.expand_or_jump()
           end
         end, { 'i', 's' }),
         ['<C-h>'] = cmp.mapping(function()
-          if luasnip.locally_jumpable(-1) then
+          if luasnip.jumpable(-1) then
             luasnip.jump(-1)
           end
         end, { 'i', 's' }),
