@@ -56,7 +56,7 @@ return { -- Autocompletion
           c = cmp.mapping.close(),
         },
         -- Manually trigger a completion from nvim-cmp.
-        --['<C-b>'] = cmp.mapping.complete {},
+        ['<C-b>'] = cmp.mapping.complete {},
 
         -- Navigate snippets
         ['<C-l>'] = cmp.mapping(function()
