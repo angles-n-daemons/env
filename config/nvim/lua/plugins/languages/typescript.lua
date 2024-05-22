@@ -76,7 +76,7 @@ return {
   {
     'nvim-neotest/neotest',
     optional = true,
-    requires = {
+    dependencies = {
       'nvim-neotest/neotest-jest',
     },
     opts = function(_, opts)
