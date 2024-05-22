@@ -22,6 +22,8 @@ return {
     { "<leader>dt", function() require("dap").terminate() end,                                            desc = "Terminate" },
     { "<leader>dw", function() require("dap.ui.widgets").hover() end,                                     desc = "Widgets" },
     { "<F7>",       function() require('dapui').toggle() end,                                             desc = "Debug: see last sessions result" },
+    -- requires neotest to be installed
+    { "<leader>td", function() require("neotest").run.run({ strategy = "dap" }) end,                      desc = "Debug Nearest" },
   },
   config = function()
     local dap, dapui = require("dap"), require("dapui")
