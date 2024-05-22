@@ -21,8 +21,6 @@ end
 
 -- <bs> - navigates working directory up
 -- . sets current working directory
--- TODO: reorg key mappings, having a leader single key to open close window
-
 return {
   'nvim-neo-tree/neo-tree.nvim',
   branch = 'v3.x',

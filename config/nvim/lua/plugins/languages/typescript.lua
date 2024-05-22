@@ -23,22 +23,22 @@ local typescriptTools = {
   'eslint_d',
 }
 local formattersByFiletype = {
-  ["javascript"] = { "prettier" },
-  ["javascriptreact"] = { "prettier" },
-  ["typescript"] = { "prettier" },
-  ["typescriptreact"] = { "prettier" },
-  ["vue"] = { "prettier" },
-  ["css"] = { "prettier" },
-  ["scss"] = { "prettier" },
-  ["less"] = { "prettier" },
-  ["html"] = { "prettier" },
-  ["json"] = { "prettier" },
-  ["jsonc"] = { "prettier" },
-  ["yaml"] = { "prettier" },
-  ["markdown"] = { "prettier" },
-  ["markdown.mdx"] = { "prettier" },
-  ["graphql"] = { "prettier" },
-  ["handlebars"] = { "prettier" },
+  ['javascript'] = { 'prettier' },
+  ['javascriptreact'] = { 'prettier' },
+  ['typescript'] = { 'prettier' },
+  ['typescriptreact'] = { 'prettier' },
+  ['vue'] = { 'prettier' },
+  ['css'] = { 'prettier' },
+  ['scss'] = { 'prettier' },
+  ['less'] = { 'prettier' },
+  ['html'] = { 'prettier' },
+  ['json'] = { 'prettier' },
+  ['jsonc'] = { 'prettier' },
+  ['yaml'] = { 'prettier' },
+  ['markdown'] = { 'prettier' },
+  ['markdown.mdx'] = { 'prettier' },
+  ['graphql'] = { 'prettier' },
+  ['handlebars'] = { 'prettier' },
 }
 
 return {
@@ -65,11 +65,28 @@ return {
 
   -- add formatting settings
   {
-    "stevearc/conform.nvim",
+    'stevearc/conform.nvim',
     optional = true,
     opts = {
       formatters_by_ft = formattersByFiletype,
     },
+  },
+
+  -- add testing settings
+  {
+    'nvim-neotest/neotest',
+    optional = true,
+    requires = {
+      'nvim-neotest/neotest-jest',
+    },
+    opts = function(_, opts)
+      opts.adapters = opts.adapters or {}
+
+      local jest = require('neotest-jest')({
+        jestCommand = 'npm test --',
+      })
+      table.insert(opts.adapters, jest)
+    end
   },
 
 
@@ -101,8 +118,6 @@ return {
   --   optional = true,
   --   opts = function()
   --     local dap = require 'dap'
-  --     print(dump(dap.adapters))
-  --     print('hea')
   --     if not dap.adapters['pwa-node'] then
   --       require('dap').adapters['pwa-node'] = {
   --         type = 'server',

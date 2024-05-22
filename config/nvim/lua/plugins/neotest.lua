@@ -1,19 +1,11 @@
-local function getDependencies()
-  -- base dependencies for nvim-neotest
-  local dependencies = {
+return {
+  'nvim-neotest/neotest',
+  dependencies = {
     'nvim-neotest/nvim-nio',
     'nvim-lua/plenary.nvim',
     'antoinemadec/FixCursorHold.nvim',
     'nvim-treesitter/nvim-treesitter',
-  }
-  -- add additional language dependencies (ie neotest-jest)
-  -- TODO: Figure out additional dependencies
-  return dependencies
-end
-
-return {
-  'nvim-neotest/neotest',
-  dependencies = getDependencies(),
+  },
   keys = {
     {
       '<leader>tt',
@@ -65,10 +57,8 @@ return {
       desc = 'Stop',
     },
   },
-  config = function()
-    local adapters = {}
-    require('neotest').setup {
-      adapters = adapters,
+  opts = function(_, opts)
+    return vim.tbl_extend('keep', opts, {
       quickfix = {
         enabled = false,
         open = false,
@@ -82,6 +72,9 @@ return {
         virtual_text = false,
         signs = true,
       },
-    }
+    })
+  end,
+  config = function(_, opts)
+    require('neotest').setup(opts)
   end,
 }
