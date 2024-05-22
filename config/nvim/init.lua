@@ -11,7 +11,7 @@ require('config.autocmds')
 require('config.options')
 
 -- set the primary colorscheme
-vim.cmd('colorscheme tokyonight')
+vim.cmd('colorscheme PaperColor')
 
 -- TODO: get rid of the below
 vim.o.shiftwidth = 2
