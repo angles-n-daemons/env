@@ -35,5 +35,5 @@ map('i', ';', ';<c-g>u')
 
 -- save file
 map({ 'i', 'x', 'n', 's' }, '<C-s>', '<cmd>w<cr><esc>', { desc = 'Save File' })
-
-require('which-key').register()
+-- quit
+map({ 'i', 'x', 'n', 's' }, '<C-c>', '<cmd>q<cr><esc>', { desc = 'Quit' })
