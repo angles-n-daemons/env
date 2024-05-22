@@ -27,7 +27,8 @@ return { -- Autocompletion
     -- See `:help cmp`
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
-    luasnip.config.setup {}
+    print('snippin')
+    luasnip.config.setup { store_selection_keys = "<Tab>" }
 
     cmp.setup {
       snippet = {
@@ -44,9 +45,9 @@ return { -- Autocompletion
       -- No, but seriously. Please read `:help ins-completion`, it is really good!
       mapping = cmp.mapping.preset.insert {
         -- scroll options
-        ['<C-j>'] = cmp.mapping.select_next_item(),
+        ['<C-n>'] = cmp.mapping.select_next_item(),
         ['<C-p>'] = cmp.mapping.select_prev_item(),
-        -- ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        --['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
 
         -- confirm / cancel

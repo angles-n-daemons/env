@@ -1,5 +1,4 @@
-local telescope = require('plugins.util.telescope')
-local languages = require('config.languages')
+local telescope = require 'plugins.util.telescope'
 
 local function mapLsp(event)
   return function(mode, keys, func, desc)
@@ -14,8 +13,7 @@ return {
     dependencies = {
       { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
-      'williamboman/mason-tool-installer.nvim',
-      { 'folke/neodev.nvim', opts = {} },
+      { 'folke/neodev.nvim',       opts = {} },
     },
     keys = {
       ['<leader>cl'] = { '<cmd>LspInfo<cr>', 'Lsp Info' },
@@ -34,30 +32,21 @@ return {
           map('n', 'gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
           map('n', '<leader>K', vim.lsp.buf.signature_help, 'Signature Help')
           map('i', '<C-k>', vim.lsp.buf.signature_help, 'Signature Help')
-        end
-      })
-      require('neodev').setup({})
-      require('mason').setup()
-      local ensure_installed = {}
-      for _, config in pairs(languages) do
-        table.insert(ensure_installed, config.lsp)
-        table.insert(ensure_installed, config.formatter)
-      end
-      -- install tools from personal language configuration
-      require('mason-tool-installer').setup({
-        ensure_installed = ensure_installed,
-        auto_update = true,
-      })
-      -- automatically configure nvim-lspconfig
-      require('mason-lspconfig').setup({
-        automatic_installation = true,
-      })
-      -- setup the installed lsps
-      require('mason-lspconfig').setup_handlers({
-        function (server_name) -- default handler (optional)
-          require('lspconfig')[server_name].setup {}
         end,
       })
+      require('neodev').setup {}
+      require('mason').setup()
+
+      -- automatically configure nvim-lspconfig
+      require('mason-lspconfig').setup {
+        automatic_installation = true,
+      }
+      -- setup the installed lsps
+      require('mason-lspconfig').setup_handlers {
+        function(server_name) -- default handler (optional)
+          require('lspconfig')[server_name].setup {}
+        end,
+      }
       -- TODO: possibly tear away handlers when detaching, kickstart seems to only do that for autocmds
     end,
   },
@@ -68,9 +57,31 @@ return {
       { '<leader>cm', '<cmd>Mason<cr>', desc = 'Mason' },
     },
     build = ':MasonUpdate',
-    config = function(_, _)
-      -- trigger filetype event to load new lsp server
-      -- optionally use the options to ensure some packages are installed by default
-    end
+    config = function(_, opts)
+      require('mason').setup(opts)
+      local mr = require 'mason-registry'
+      mr:on('package:install:success', function()
+        vim.defer_fn(function()
+          -- trigger FileType event to possibly load this newly installed LSP server
+          require('lazy.core.handler.event').trigger {
+            event = 'FileType',
+            buf = vim.api.nvim_get_current_buf(),
+          }
+        end, 100)
+      end)
+      local function ensure_installed()
+        for _, tool in ipairs(opts.ensure_installed or {}) do
+          local p = mr.get_package(tool)
+          if not p:is_installed() then
+            p:install()
+          end
+        end
+      end
+      if mr.refresh then
+        mr.refresh(ensure_installed)
+      else
+        ensure_installed()
+      end
+    end,
   },
 }
