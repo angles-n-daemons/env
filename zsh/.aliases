@@ -10,3 +10,5 @@ alias tns='tmux new -s'
 alias tp='tmuxp load'
 
 alias weather='curl wttr.in/newyork'
+
+alias vim='nvim'
