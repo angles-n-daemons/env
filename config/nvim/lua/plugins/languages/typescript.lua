@@ -89,6 +89,30 @@ return {
     end
   },
 
+
+  -- Only add this if you can get inlay hints to work
+  -- -- correctly setup lspconfig
+  -- {
+  --   'neovim/nvim-lspconfig',
+  --   opts = {
+  --     servers = {
+  --       tsserver = {
+  --         settings = {
+  --           typescript = {
+  --             inlayHints = inlay_hints_settings,
+  --           },
+  --           javascript = {
+  --             inlayHints = inlay_hints_settings,
+  --           },
+  --           completions = {
+  --             completeFunctionCalls = true,
+  --           },
+  --         },
+  --       },
+  --     },
+  --   },
+  -- },
+
   {
     'mfussenegger/nvim-dap',
     optional = true,
@@ -133,4 +157,12 @@ return {
       end
     end,
   },
+  -- BELOW is lazyvim only stuff, unsure what recommended does
+  -- recommended = function()
+  --   return LazyVim.extras.wants {
+  --     root = { 'tsconfig.json', 'package.json', 'jsconfig.json' },
+  --   }
+  -- end,
+
+
 }
