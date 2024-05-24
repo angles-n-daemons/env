@@ -1,3 +1,5 @@
+local extendOptsList = require('plugins.languages.util').extendOptsList
+
 local parsers = { 'python' }
 local tools = {
   'pyright',
@@ -8,31 +10,32 @@ local tools = {
 local formattersByFiletype = {
   ['python'] = { 'autopep8' },
 }
+local adapter = {
+  ['neotest-python'] = {
+    runner = 'unittest',
+  },
+}
 
 return {
   -- add treesitter filetypes which will not autoinstall
   {
     'nvim-treesitter/nvim-treesitter',
-    opts = {
-      ensure_installed = filetypes,
-    },
+    optional = true,
+    opts = extendOptsList('ensure_installed', parsers),
   },
 
   -- required plugins for typescript development
   {
     'williamboman/mason.nvim',
-    opts = {
-      ensure_installed = tools,
-    },
+    optional = true,
+    opts = extendOptsList('ensure_installed', tools),
   },
 
   -- add formatting settings
   {
     'stevearc/conform.nvim',
     optional = true,
-    opts = {
-      formatters_by_ft = formattersByFiletype,
-    },
+    opts = extendOptsList('formatters_by_ft', formattersByFiletype),
   },
 
   -- add testing settings
@@ -42,12 +45,6 @@ return {
     dependencies = {
       'nvim-neotest/neotest-python',
     },
-    opts = {
-      adapters = {
-        ['neotest-python'] = {
-          runner = 'unittest',
-        },
-      },
-    },
+    opts = extendOptsList('adapters', { adapter }),
   },
 }

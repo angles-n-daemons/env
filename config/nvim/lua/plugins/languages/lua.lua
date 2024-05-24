@@ -1,36 +1,25 @@
-local filetypes = { 'lua' }
-local tools = { 'stylua' }
+local extendOptsList = require('plugins.languages.util').extendOptsList
+
+local parsers = { 'lua', 'luadoc', 'luap' }
+local tools = { 'stylua', 'lua-language-server' }
 local formattersByFiletype = { ['lua'] = { 'stylua' } }
 
 return {
-  ft = filetypes,
-
   -- add treesitter filetypes which will not autoinstall
   {
     'nvim-treesitter/nvim-treesitter',
-    opts = {
-      ensure_installed = {
-        'lua',
-        'luadoc',
-        'luap',
-      },
-    },
+    opts = extendOptsList('ensure_installed', parsers),
   },
 
   -- required plugins for lua development
   {
     'williamboman/mason.nvim',
-    opts = {
-      ensure_installed = tools,
-    },
+    opts = extendOptsList('ensure_installed', tools),
   },
 
   -- add formatting settings
   {
     'stevearc/conform.nvim',
-    optional = true,
-    opts = {
-      formatters_by_ft = formattersByFiletype,
-    },
+    opts = extendOptsList('formatters_by_ft', formattersByFiletype),
   },
 }

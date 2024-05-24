@@ -1,3 +1,7 @@
+local util = require 'plugins.languages.util'
+vim.print(util)
+local extendOptsList = require('plugins.languages.util').extendOptsList
+
 -- local inlay_hints_settings = {
 --   includeInlayEnumMemberValueHints = true,
 --   addMore
@@ -37,26 +41,22 @@ return {
   -- add treesitter filetypes which will not autoinstall
   {
     'nvim-treesitter/nvim-treesitter',
-    opts = {
-      ensure_installed = parsers,
-    },
+    optional = true,
+    opts = extendOptsList('ensure_installed', parsers),
   },
 
   -- required plugins for typescript development
   {
     'williamboman/mason.nvim',
-    opts = {
-      ensure_installed = tools,
-    },
+    optional = true,
+    opts = extendOptsList('ensure_installed', tools),
   },
 
   -- add formatting settings
   {
     'stevearc/conform.nvim',
     optional = true,
-    opts = {
-      formatters_by_ft = formattersByFiletype,
-    },
+    opts = extendOptsList('formatters_by_ft', formattersByFiletype),
   },
 
   -- add testing settings
