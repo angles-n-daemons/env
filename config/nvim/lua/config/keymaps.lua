@@ -7,6 +7,9 @@ local toggleBg = function()
 end
 map('n', '<C-g>', toggleBg, { desc = 'Toggle Background' })
 
+-- Show messages
+map('n', '<leader>M', '<cmd>messages<cr>', { desc = 'Show Messages' })
+
 -- command line movement remapping
 map('c', '<C-h>', '<S-Left>', { desc = '[Cmd] Jump Left' })
 map('c', '<C-l>', '<S-Right>', { desc = '[Cmd] Jump Right' })

@@ -2,13 +2,11 @@
 --   includeInlayEnumMemberValueHints = true,
 --   addMore
 -- }
-local filetypes = {
+local parsers = {
   'javascript',
-  'javascriptreact',
-  'javascript.jsx',
+  'jsx',
   'typescript',
-  'typescriptreact',
-  'typescript.tsx',
+  'tsx',
 }
 local tools = {
   'typescript-language-server',
@@ -17,10 +15,10 @@ local tools = {
   'eslint_d',
 }
 local formattersByFiletype = {
-  ['javascript'] = { 'prettier' },
-  ['javascriptreact'] = { 'prettier' },
-  ['typescript'] = { 'prettier' },
-  ['typescriptreact'] = { 'prettier' },
+  ['javascript'] = { 'prettier', 'eslint_d' },
+  ['javascriptreact'] = { 'prettier', 'eslint_d' },
+  ['typescript'] = { 'prettier', 'eslint_d' },
+  ['typescriptreact'] = { 'prettier', 'eslint_d' },
   ['vue'] = { 'prettier' },
   ['css'] = { 'prettier' },
   ['scss'] = { 'prettier' },
@@ -36,24 +34,20 @@ local formattersByFiletype = {
 }
 
 return {
-  ft = filetypes,
-
   -- add treesitter filetypes which will not autoinstall
   {
     'nvim-treesitter/nvim-treesitter',
-    opts = function(_, opts)
-      opts.ensure_installed = opts.ensure_installed or {}
-      vim.list_extend(opts.ensure_installed, { 'typescript', 'tsx' })
-    end,
+    opts = {
+      ensure_installed = parsers,
+    },
   },
 
   -- required plugins for typescript development
   {
     'williamboman/mason.nvim',
-    opts = function(_, opts)
-      opts.ensure_installed = opts.ensure_installed or {}
-      vim.list_extend(opts.ensure_installed, tools)
-    end,
+    opts = {
+      ensure_installed = tools,
+    },
   },
 
   -- add formatting settings
@@ -75,11 +69,11 @@ return {
     opts = function(_, opts)
       opts.adapters = opts.adapters or {}
 
-      local jest = require('neotest-jest')({
+      local jest = require 'neotest-jest' {
         jestCommand = 'npm test --',
-      })
+      }
       table.insert(opts.adapters, jest)
-    end
+    end,
   },
 
   -- debug adapter configuration
@@ -98,7 +92,7 @@ return {
             -- 💀 Make sure to update this path to point to your installation
             args = {
               require('mason-registry').get_package('js-debug-adapter'):get_install_path()
-              .. '/js-debug/src/dapDebugServer.js',
+                .. '/js-debug/src/dapDebugServer.js',
               '${port}',
             },
           },

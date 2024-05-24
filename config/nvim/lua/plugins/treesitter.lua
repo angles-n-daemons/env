@@ -56,6 +56,7 @@ return {
     },
     config = function(_, opts)
       ---@diagnostic disable-next-line: missing-fields
+      vim.print(opts)
       require('nvim-treesitter.configs').setup(opts)
     end,
   },
