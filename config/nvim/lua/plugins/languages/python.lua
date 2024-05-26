@@ -41,10 +41,27 @@ return {
   -- add testing settings
   {
     'nvim-neotest/neotest',
-    optional = true,
     dependencies = {
       'nvim-neotest/neotest-python',
     },
-    opts = extendOptsList('adapters', { adapter }),
+    opts = function(_, opts)
+      adapter = require('neotest-python')({
+        runner = 'unittest',
+      })
+      extendOptsList('adapters', { adapter })(_, opts)
+    end
+  },
+
+  -- debug adapter configuration
+  {
+    "mfussenegger/nvim-dap",
+    optional = true,
+    dependencies = {
+      "mfussenegger/nvim-dap-python",
+      config = function()
+        local path = require("mason-registry").get_package("debugpy"):get_install_path()
+        require("dap-python").setup(path .. "/venv/bin/python")
+      end,
+    },
   },
 }

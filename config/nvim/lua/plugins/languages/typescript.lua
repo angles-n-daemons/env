@@ -1,5 +1,3 @@
-local util = require 'plugins.languages.util'
-vim.print(util)
 local extendOptsList = require('plugins.languages.util').extendOptsList
 
 -- local inlay_hints_settings = {
@@ -8,7 +6,6 @@ local extendOptsList = require('plugins.languages.util').extendOptsList
 -- }
 local parsers = {
   'javascript',
-  'jsx',
   'typescript',
   'tsx',
 }
@@ -67,12 +64,10 @@ return {
       'nvim-neotest/neotest-jest',
     },
     opts = function(_, opts)
-      opts.adapters = opts.adapters or {}
-
-      local jest = require 'neotest-jest' {
+      local adapter = require 'neotest-jest' {
         jestCommand = 'npm test --',
       }
-      table.insert(opts.adapters, jest)
+      extendOptsList('adapters', { adapter })(_, opts)
     end,
   },
 
@@ -92,7 +87,7 @@ return {
             -- 💀 Make sure to update this path to point to your installation
             args = {
               require('mason-registry').get_package('js-debug-adapter'):get_install_path()
-                .. '/js-debug/src/dapDebugServer.js',
+              .. '/js-debug/src/dapDebugServer.js',
               '${port}',
             },
           },
