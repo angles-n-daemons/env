@@ -13,7 +13,7 @@ return {
     dependencies = {
       { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
-      { 'folke/neodev.nvim',       opts = {} },
+      { 'folke/neodev.nvim', opts = {} },
     },
     keys = {
       ['<leader>cl'] = { '<cmd>LspInfo<cr>', 'Lsp Info' },

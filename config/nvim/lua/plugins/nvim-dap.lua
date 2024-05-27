@@ -28,15 +28,17 @@ return {
     { "<leader>td", function() require("neotest").run.run({ strategy = "dap" }) end,                      desc = "Debug Nearest" },
   },
   config = function()
-    local dap, dapui = require("dap"), require("dapui")
+    local dap, dapui = require 'dap', require 'dapui'
     dapui.setup()
 
     -- highlight current line
-    vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
+    vim.api.nvim_set_hl(0, 'DapStoppedLine', { default = true, link = 'Visual' })
 
     -- configure signs
-    vim.fn.sign_define('DapStopped',
-      { text = '󰁕 ', texthl = 'DiagnosticWarn', linehl = 'DapStoppedLine', numhl = 'DapStoppedLine' })
+    vim.fn.sign_define(
+      'DapStopped',
+      { text = '󰁕 ', texthl = 'DiagnosticWarn', linehl = 'DapStoppedLine', numhl = 'DapStoppedLine' }
+    )
     vim.fn.sign_define('DapBreakpoint', { text = ' ', texthl = 'DiagnosticInfo' })
     vim.fn.sign_define('DapBreakpointCondition', { text = ' ', texthl = 'DiagnosticInfo' })
     vim.fn.sign_define('DapBreakpointRejected', { text = ' ', texthl = 'DiagnosticError' })
