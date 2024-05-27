@@ -1,4 +1,5 @@
 local extendOptsList = require('plugins.languages.util').extendOptsList
+local extendOptsTable = require('plugins.languages.util').extendOptsTable
 
 -- local inlay_hints_settings = {
 --   includeInlayEnumMemberValueHints = true,
@@ -53,7 +54,7 @@ return {
   {
     'stevearc/conform.nvim',
     optional = true,
-    opts = extendOptsList('formatters_by_ft', formattersByFiletype),
+    opts = extendOptsTable('formatters_by_ft', formattersByFiletype),
   },
 
   -- add testing settings

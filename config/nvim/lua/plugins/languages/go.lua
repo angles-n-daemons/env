@@ -1,20 +1,14 @@
 local extendOptsList = require('plugins.languages.util').extendOptsList
 local extendOptsTable = require('plugins.languages.util').extendOptsTable
 
-local parsers = { 'python' }
+local parsers = { 'go', 'gomod', 'gosum', 'gotmpl', 'gowork' }
 local tools = {
-  'pyright',
-  'debugpy',
-  'flake8',
-  'autopep8',
+  'gopls',
+  'delve',
+  'goimports',
 }
 local formattersByFiletype = {
-  ['python'] = { 'autopep8' },
-}
-local adapter = {
-  ['neotest-python'] = {
-    runner = 'unittest',
-  },
+  ['go'] = { 'goimports' },
 }
 
 return {
@@ -43,11 +37,11 @@ return {
   {
     'nvim-neotest/neotest',
     dependencies = {
-      'nvim-neotest/neotest-python',
+      'nvim-neotest/neotest-go',
     },
     opts = function(_, opts)
-      adapter = require('neotest-python')({
-        runner = 'unittest',
+      local adapter = require('neotest-go')({
+        recursive_run = true,
       })
       extendOptsList('adapters', { adapter })(_, opts)
     end
@@ -58,11 +52,20 @@ return {
     "mfussenegger/nvim-dap",
     optional = true,
     dependencies = {
-      "mfussenegger/nvim-dap-python",
-      config = function()
-        local path = require("mason-registry").get_package("debugpy"):get_install_path()
-        require("dap-python").setup(path .. "/venv/bin/python")
-      end,
+      "leoluz/nvim-dap-go",
+      config = true,
     },
+    config = function()
+      require("dap-go").setup({
+        dap_configurations = {
+          {
+            type = "go",
+            name = "Debug main.go",
+            request = "launch",
+            program = "${workspaceFolder}/cmd/main.go"
+          },
+        }
+      })
+    end
   },
 }

@@ -1,4 +1,5 @@
 local extendOptsList = require('plugins.languages.util').extendOptsList
+local extendOptsTable = require('plugins.languages.util').extendOptsTable
 
 local parsers = { 'lua', 'luadoc', 'luap' }
 local tools = { 'stylua', 'lua-language-server' }
@@ -20,6 +21,6 @@ return {
   -- add formatting settings
   {
     'stevearc/conform.nvim',
-    opts = extendOptsList('formatters_by_ft', formattersByFiletype),
+    opts = extendOptsTable('formatters_by_ft', formattersByFiletype),
   },
 }
