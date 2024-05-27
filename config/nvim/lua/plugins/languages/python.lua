@@ -25,7 +25,7 @@ return {
     opts = extendOptsList('ensure_installed', parsers),
   },
 
-  -- required plugins for typescript development
+  -- required plugins for development
   {
     'williamboman/mason.nvim',
     optional = true,
@@ -46,22 +46,22 @@ return {
       'nvim-neotest/neotest-python',
     },
     opts = function(_, opts)
-      adapter = require('neotest-python')({
+      adapter = require 'neotest-python' {
         runner = 'unittest',
-      })
+      }
       extendOptsList('adapters', { adapter })(_, opts)
-    end
+    end,
   },
 
   -- debug adapter configuration
   {
-    "mfussenegger/nvim-dap",
+    'mfussenegger/nvim-dap',
     optional = true,
     dependencies = {
-      "mfussenegger/nvim-dap-python",
+      'mfussenegger/nvim-dap-python',
       config = function()
-        local path = require("mason-registry").get_package("debugpy"):get_install_path()
-        require("dap-python").setup(path .. "/venv/bin/python")
+        local path = require('mason-registry').get_package('debugpy'):get_install_path()
+        require('dap-python').setup(path .. '/venv/bin/python')
       end,
     },
   },

@@ -43,7 +43,7 @@ return {
     opts = extendOptsList('ensure_installed', parsers),
   },
 
-  -- required plugins for typescript development
+  -- required plugins for development
   {
     'williamboman/mason.nvim',
     optional = true,
@@ -88,7 +88,7 @@ return {
             -- 💀 Make sure to update this path to point to your installation
             args = {
               require('mason-registry').get_package('js-debug-adapter'):get_install_path()
-              .. '/js-debug/src/dapDebugServer.js',
+                .. '/js-debug/src/dapDebugServer.js',
               '${port}',
             },
           },

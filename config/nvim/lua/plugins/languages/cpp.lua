@@ -1,14 +1,16 @@
 local extendOptsList = require('plugins.languages.util').extendOptsList
 local extendOptsTable = require('plugins.languages.util').extendOptsTable
 
-local parsers = { 'go', 'gomod', 'gosum', 'gotmpl', 'gowork' }
+local parsers = { 'c', 'cpp', 'make' }
 local tools = {
-  'gopls',
-  'delve',
-  'goimports',
+  'clangd',
+  'codelldb',
+  'cpplint',
+  'clang-format',
 }
 local formattersByFiletype = {
-  ['go'] = { 'goimports' },
+  ['c'] = { 'clang-format' },
+  ['cpp'] = { 'clang-format' },
 }
 
 return {
@@ -51,21 +53,35 @@ return {
   {
     'mfussenegger/nvim-dap',
     optional = true,
-    dependencies = {
-      'leoluz/nvim-dap-go',
-      config = true,
-    },
-    config = function()
-      require('dap-go').setup {
-        dap_configurations = {
-          {
-            type = 'go',
-            name = 'Debug main.go',
-            request = 'launch',
-            program = '${workspaceFolder}/cmd/main.go',
+    opts = function()
+      local dap = require 'dap'
+      if not dap.adapters['codelldb'] then
+        require('dap').adapters['codelldb'] = {
+          type = 'server',
+          host = 'localhost',
+          port = '${port}',
+          executable = {
+            command = 'codelldb',
+            args = {
+              '--port',
+              '${port}',
+            },
           },
-        },
-      }
+        }
+      end
+      for _, lang in ipairs { 'c', 'cpp' } do
+        dap.configurations[lang] = {
+          {
+            type = 'codelldb',
+            request = 'launch',
+            name = 'Launch file',
+            program = function()
+              return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+            end,
+            cwd = '${workspaceFolder}',
+          },
+        }
+      end
     end,
   },
 }
