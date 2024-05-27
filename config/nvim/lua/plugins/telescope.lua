@@ -18,9 +18,9 @@ return {
     { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
   },
   keys = {
-    { '<leader>/',       telescope('live_grep'),                              desc = 'Grep (Root Dir)' },
-    { '<leader><space>', telescope('find_files'),                             desc = 'Find Files (Root Dir)' },
-    { '<leader>C',       telescope('colorscheme', { enable_preview = true }), desc = 'Colorscheme with Preview' },
+    { '<C-f>',     telescope('live_grep'),                              desc = 'Grep (Root Dir)' },
+    { '<C-p>',     telescope('find_files'),                             desc = 'Find Files (Root Dir)' },
+    { '<leader>C', telescope('colorscheme', { enable_preview = true }), desc = 'Colorscheme with Preview' },
     {
       '<leader>,',
       '<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>',
