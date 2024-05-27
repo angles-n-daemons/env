@@ -61,7 +61,7 @@ return {
           host = 'localhost',
           port = '${port}',
           executable = {
-            command = 'codelldb',
+            command = require('mason-registry').get_package('codelldb'):get_install_path() .. '/' .. 'codelldb',
             args = {
               '--port',
               '${port}',
