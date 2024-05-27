@@ -52,20 +52,3 @@ return {
     -- TODO: setup loading launch json
   end,
 }
--- 'leoluz/nvim-dap-go',
---
--- You'll need to check that you have the required things installed
--- online, please don't ask me how to install them :)
--- ensure_installed = {
---   -- Update this to ensure that you have the debuggers for the langs you want
---   'delve',
--- },
---
--- -- Install golang specific config
--- require('dap-go').setup {
---   delve = {
---     -- On Windows delve must be run attached or it crashes.
---     -- See https://github.com/leoluz/nvim-dap-go/blob/main/README.md#configuring
---     detached = vim.fn.has 'win32' == 0,
---   },
--- }
