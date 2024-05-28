@@ -12,3 +12,5 @@ alias tp='tmuxp load'
 alias weather='curl wttr.in/newyork'
 
 alias vim='nvim'
+alias pyvim='LANGUAGE=python nvim'
+alias tsvim='LANGUAGE=typescript nvim'
