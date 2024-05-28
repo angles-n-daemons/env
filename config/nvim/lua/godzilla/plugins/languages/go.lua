@@ -1,5 +1,5 @@
-local extendOptsList = require('util.opts').extendOptsList
-local extendOptsTable = require('util.opts').extendOptsTable
+local extendOptsList = require('godzilla.util.opts').extendOptsList
+local extendOptsTable = require('godzilla.util.opts').extendOptsTable
 
 local parsers = { 'go', 'gomod', 'gosum', 'gotmpl', 'gowork' }
 local tools = {

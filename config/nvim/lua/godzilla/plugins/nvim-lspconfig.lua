@@ -1,4 +1,4 @@
-local telescope = require 'util.telescope'
+local telescope = require 'godzilla.util.telescope'
 
 local function mapLsp(event)
   return function(mode, keys, func, desc)

@@ -1,5 +1,5 @@
-local extendOptsList = require('util.opts').extendOptsList
-local extendOptsTable = require('util.opts').extendOptsTable
+local extendOptsList = require('godzilla.util.opts').extendOptsList
+local extendOptsTable = require('godzilla.util.opts').extendOptsTable
 
 -- local inlay_hints_settings = {
 --   includeInlayEnumMemberValueHints = true,
@@ -109,7 +109,7 @@ return {
               type = 'pwa-node',
               request = 'attach',
               name = 'Attach',
-              processId = require('dap.utils').pick_process,
+              processId = require('dap.godzilla.utils').pick_process,
               cwd = '${workspaceFolder}',
             },
           }

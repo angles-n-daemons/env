@@ -1,4 +1,4 @@
-local telescope = require 'util.telescope'
+local telescope = require 'godzilla.util.telescope'
 
 return {
   'nvim-telescope/telescope.nvim',
