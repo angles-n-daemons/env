@@ -72,6 +72,10 @@ _/    _/_/_/    _/_/_/      _/      _/  _/    _/    _/
   ]]
 end
 
+local exploreCwd = function()
+  require('neo-tree.command').execute { toggle = true, dir = vim.uv.cwd() }
+end
+
 return {
   'nvimdev/dashboard-nvim',
   opts = function()
@@ -91,9 +95,9 @@ return {
           { action = "Telescope find_files", desc = " Find File", icon = " ", key = "f" },
           { action = "ene | startinsert", desc = " New File", icon = " ", key = "n" },
           { action = "Telescope oldfiles", desc = " Recent Files", icon = " ", key = "r" },
-          { action = "Telescope live_grep", desc = " Find Text", icon = " ", key = "g" },
-          { action = [[lua LazyVim.telescope.config_files()()]], desc = " Config [TODO]", icon = " ", key = "c" },
-          { action = 'lua require("persistence").load()', desc = " Restore Session [TODO]", icon = " ", key = "s" },
+          { action = "Telescope live_grep", desc = " Search", icon = " ", key = "g" },
+          { action = exploreCwd, desc = " Explore", icon = "󰙅 ", key = "e" },
+          { action = [[print('not ready')]], desc = " Config [TODO]", icon = " ", key = "c" },
           { action = "qa", desc = " Quit", icon = " ", key = "q" },
         },
         footer = function()
