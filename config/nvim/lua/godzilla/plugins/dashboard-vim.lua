@@ -97,7 +97,7 @@ return {
           { action = "Telescope oldfiles", desc = " Recent Files", icon = " ", key = "r" },
           { action = "Telescope live_grep", desc = " Search", icon = " ", key = "g" },
           { action = exploreCwd, desc = " Explore", icon = "󰙅 ", key = "e" },
-          { action = [[print('not ready')]], desc = " Config [TODO]", icon = " ", key = "c" },
+          { action = [[print('not ready')]], desc = " Config", icon = " ", key = "c" },
           { action = "qa", desc = " Quit", icon = " ", key = "q" },
         },
         footer = function()
