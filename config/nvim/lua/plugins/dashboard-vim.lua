@@ -22,6 +22,11 @@ $$ |      /  \__$$ |
 $$ |      $$    $$/                              
 $$/        $$$$$$/                               
   ]]
+  local version = '󰌠 ' .. vim.fn.system 'python3 --version'
+  version = version.gsub(version, '\n', ' ')
+  -- line length is 50, [ ] takes up 4 chars, want to subtract half the version to center
+  local padding = string.rep(' ', 14 - (#version / 2))
+  logo = logo .. '\n' .. padding .. '[ ' .. version .. ' ]'
 elseif LANGUAGE == 'typescript' then
   logo = [[
    /\\\                                  /\\\                           
@@ -32,6 +37,10 @@ elseif LANGUAGE == 'typescript' then
        \//\\\\\    /\\\\\\\\\\    \//\\\     \/\\\ \/\\\  \/\\\  \/\\\  
          \/////    \//////////      \///      \///  \///   \///   \///  
   ]]
+  local version = ' node ' .. vim.fn.system 'node --version'
+  version = version.gsub(version, '\n', ' ')
+  local padding = string.rep(' ', 12 - (#version / 2))
+  logo = logo .. '\n' .. padding .. '[ ' .. version .. ' ]'
 elseif LANGUAGE == 'go' then
   logo = [[
                   _                    ,_--~~~~~---_         
