@@ -58,10 +58,10 @@ return {
       if not dap.adapters['codelldb'] then
         require('dap').adapters['codelldb'] = {
           type = 'server',
-          host = 'localhost',
+          host = '127.0.0.1', -- localhost doesn't work on mac
           port = '${port}',
           executable = {
-            command = require('mason-registry').get_package('codelldb'):get_install_path() .. '/' .. 'codelldb',
+            command = 'codelldb',
             args = {
               '--port',
               '${port}',
