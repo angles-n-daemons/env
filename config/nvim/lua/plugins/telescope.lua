@@ -1,4 +1,4 @@
-local telescope = require 'plugins.util.telescope'
+local telescope = require 'util.telescope'
 
 return {
   'nvim-telescope/telescope.nvim',

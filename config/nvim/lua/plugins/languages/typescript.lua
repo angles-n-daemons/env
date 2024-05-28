@@ -1,5 +1,5 @@
-local extendOptsList = require('plugins.languages.util').extendOptsList
-local extendOptsTable = require('plugins.languages.util').extendOptsTable
+local extendOptsList = require('util.opts').extendOptsList
+local extendOptsTable = require('util.opts').extendOptsTable
 
 -- local inlay_hints_settings = {
 --   includeInlayEnumMemberValueHints = true,

@@ -1,4 +1,4 @@
-local telescope = require 'plugins.util.telescope'
+local telescope = require 'util.telescope'
 
 local function mapLsp(event)
   return function(mode, keys, func, desc)
