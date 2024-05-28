@@ -5,14 +5,12 @@ vim.g.mapleader = ' '
 -- set localleader to \
 vim.g.maplocalleader = '\\'
 
+require 'config.languages'
 require 'config.lazy'
 require 'config.keymaps'
 require 'config.autocmds'
 require 'config.options'
-
--- set the primary colorscheme
-vim.cmd 'set termguicolors'
-vim.cmd 'colorscheme tokyonight'
+require 'config.colors'
 
 -- TODO: get rid of the below
 vim.o.shiftwidth = 2
