@@ -2,14 +2,15 @@
 -- some colorschemes require manual setting of termguicolors
 vim.cmd 'set termguicolors'
 
+local color = 'tokyonight'
 if LANGUAGE == 'python' then
-  vim.cmd 'colorscheme gruvbox'
+  color = 'gruvbox'
 elseif LANGUAGE == 'typescript' then
-  vim.cmd 'colorscheme tokyonight'
+  color = 'catppuccin'
 elseif LANGUAGE == 'go' then
-  -- TODO: find colorscheme
+  color = 'PaperColor'
 elseif LANGUAGE == 'c' then
-  -- TODO: find colorscheme
-elseif LANGUAGE == 'lua' then
-  -- TODO: find colorscheme
+  color = 'melange'
 end
+
+vim.cmd('colorscheme ' .. color)
