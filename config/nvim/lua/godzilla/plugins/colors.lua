@@ -1,3 +1,6 @@
+-- colorschemes that I've chosen often have both a dark and a light theme
+-- as well as cover varying highlights on things like dap, dashboard and others
+
 return {
   { 'ellisonleao/gruvbox.nvim', lazy = false, priority = 1000, config = true },
   { 'NLKNguyen/papercolor-theme', lazy = false, priority = 1000, config = function() end },
