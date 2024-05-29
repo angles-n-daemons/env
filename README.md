@@ -2,47 +2,12 @@
 
 This is my untested development environment setup for OSX.
 
- - Install xcode command line tools
-   - `xcode-select install`
- - Install homebrew:
-   - `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
- - Install command line packages in the [packages file](os-packages) one by one
- - Setup zsh
-   - Install oh my zsh
-     - `./zsh/install-oh-my-zsh.sh`
-   - Copy your aliases
-     - `cp ./zsh/.aliases ~/.aliases`
-   - Copy the zsh extras over to the new zshrc
-     - `cat ./zsh/.zshrc-extras >> ~/.zshrc`
-   - Look over the zshrc
-     - `vim ~/.zshrc`
- - Setup vim
-   - Copy the vimrc
-     - `cp ./vim/.vimrc ~/.vimrc`
-   - Install vim plug
-     - `./vim/install-plug.sh`
-   - Install vim plugins
-     - `vim`
-     - `:PlugInstall`
-   - Add YouCompleteMe (optional)
- - Setup tmux
-   - Copy the tmux configuration
-     - `cp ./tmux/.tmux.conf ~/.tmux.conf`
- - Setup git
-   - Copy gitignore
-     - `cp ./git/.gitignore ~/.gitignore`
-   - Copy gitconfig
-     - `cp ./git/.gitconfig ~/.gitconfig`
- - Setup ttyd
-   - Setup launchd configuration for ttyd
-     - `cp ./osx/LaunchAgents/ttyd.plist ~/Library/LaunchAgents/ttyd.plist`
-     - Edit the Working Directory in the plist file:
-       - `vi ~/Library/LaunchAgents/ttyd.plist`
-     - `launchctl load ~/Library/LaunchAgents/ttyd.plist`
-     - `launchctl start com.godzilla.ttyd`
- - Install [Arc browser](https://arc.net/)
- - Turn on the Mac firewall
-   - Go to System Settings
-   - Go to Network
-   - Click the Firewall tab
-   - Toggle the on-off button
+- Install xcode command line tools
+  - `xcode-select install`
+- Run setup script
+  - `./plant.sh`
+- Turn on the Mac firewall
+  - Go to System Settings
+  - Go to Network
+  - Click the Firewall tab
+  - Toggle the on-off button

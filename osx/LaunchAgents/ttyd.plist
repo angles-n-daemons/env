@@ -28,11 +28,11 @@
 
     <key>StandardOutPath</key>
 
-    <string>/tmp/log/anglesdaemonsttyd.log</string>
+    <string>/tmp/log/godzillattyd.log</string>
 
     <key>StandardErrorPath</key>
 
-    <string>/tmp/log/anglesdaemonsttyd.log</string>
+    <string>/tmp/log/godzillattyd.log</string>
 
     <key>WorkingDirectory</key>
 
