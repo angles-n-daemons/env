@@ -95,7 +95,7 @@ return {
           { action = "Telescope find_files", desc = " Find File", icon = " ", key = "f" },
           { action = "ene | startinsert", desc = " New File", icon = " ", key = "n" },
           { action = "Telescope oldfiles", desc = " Recent Files", icon = " ", key = "r" },
-          { action = "Telescope live_grep", desc = " Search", icon = " ", key = "g" },
+          { action = "Telescope live_grep", desc = " Search", icon = " ", key = "s" },
           { action = exploreCwd, desc = " Explore", icon = "󰙅 ", key = "e" },
           { action = [[print('not ready')]], desc = " Config", icon = " ", key = "c" },
           { action = "qa", desc = " Quit", icon = " ", key = "q" },
