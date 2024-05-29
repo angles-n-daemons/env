@@ -2,13 +2,13 @@
 -- some colorschemes require manual setting of termguicolors
 vim.cmd 'set termguicolors'
 
-local color = 'tokyonight'
+local color = 'modus'
 if LANGUAGE == 'python' then
   color = 'gruvbox'
 elseif LANGUAGE == 'typescript' then
   color = 'catppuccin'
 elseif LANGUAGE == 'go' then
-  color = 'PaperColor'
+  color = 'three-firewatch'
 elseif LANGUAGE == 'c' then
   color = 'melange'
 end
