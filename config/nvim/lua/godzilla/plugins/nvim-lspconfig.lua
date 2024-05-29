@@ -30,6 +30,7 @@ return {
           map('n', 'gI', telescope('lsp_implementations', { reuse_win = true }), '[G]oto [I]mplementation')
           map('n', 'gy', telescope('lsp_type_definitions', { reuse_win = true }), '[G]oto T[y]pe Definitions')
           map('n', 'gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+          map('n', '<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
           map('n', '<leader>K', vim.lsp.buf.signature_help, 'Signature Help')
           map('i', '<C-k>', vim.lsp.buf.signature_help, 'Signature Help')
         end,
