@@ -11,6 +11,8 @@ elseif LANGUAGE == 'go' then
   color = 'three-firewatch'
 elseif LANGUAGE == 'c' then
   color = 'modus'
+elseif LANGUAGE == 'rust' then
+  color = 'melange'
 end
 
 vim.cmd('colorscheme ' .. color)
