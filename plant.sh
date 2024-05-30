@@ -10,8 +10,10 @@ brew install fortune \
   git \
   vim \
   fortune \
-  font-fira-code-nerd-font \
   arc \
+  neovim \
+  font-fira-code-nerd-font \
+  ripgrep \
   # ttyd\
 
 # Setup zsh
