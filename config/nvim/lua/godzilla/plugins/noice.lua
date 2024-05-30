@@ -2,7 +2,7 @@ return {
   'folke/noice.nvim',
   event = 'VeryLazy',
   keys = {
-    { '<leader>nl', '<cmd>Noice last<cr>', desc = '[N]otification, [L]ast' },
+    { '<leader>nl', '<C-n>', desc = 'nnnnnnnnn[N]oice!' },
   },
   dependencies = {
     'MunifTanjim/nui.nvim',

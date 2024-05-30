@@ -11,7 +11,7 @@ end
 map('n', '<C-g>', toggleBg, { desc = 'Toggle Background' })
 
 -- Show messages
-map('n', '<leader>m', '<cmd>messages<cr>', { desc = 'Show Messages' })
+map('n', '<C-m>', '<cmd>messages<cr>', { desc = 'Show Messages' })
 
 -- command line movement remapping
 map('c', '<C-h>', '<S-Left>', { desc = '[Cmd] Jump Left' })
