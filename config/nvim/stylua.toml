@@ -1,5 +1,3 @@
-# TODO: this isn't being used
-
 column_width = 120
 line_endings = "Unix"
 indent_type = "Spaces"

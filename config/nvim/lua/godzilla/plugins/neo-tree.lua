@@ -71,8 +71,4 @@ return {
       },
     },
   },
-  config = function(_, _)
-    -- TODO: when file is moved, update the lsp like lazy does
-    -- TODO: when lazygit closes, update the git status of the tree
-  end,
 }

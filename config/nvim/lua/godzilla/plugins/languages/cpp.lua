@@ -55,8 +55,8 @@ return {
     optional = true,
     opts = function()
       local dap = require 'dap'
-      if not dap.adapters['codelldb'] then
-        require('dap').adapters['codelldb'] = {
+      if not dap.adapters['cppdbg'] then
+        require('dap').adapters['cppdbg'] = {
           type = 'server',
           host = '127.0.0.1', -- localhost doesn't work on mac
           port = '${port}',
@@ -66,19 +66,6 @@ return {
               '--port',
               '${port}',
             },
-          },
-        }
-      end
-      for _, lang in ipairs { 'c', 'cpp' } do
-        dap.configurations[lang] = {
-          {
-            type = 'codelldb',
-            request = 'launch',
-            name = 'Launch file',
-            program = function()
-              return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-            end,
-            cwd = '${workspaceFolder}',
           },
         }
       end

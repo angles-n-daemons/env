@@ -48,7 +48,6 @@ return {
           require('lspconfig')[server_name].setup {}
         end,
       }
-      -- TODO: possibly tear away handlers when detaching, kickstart seems to only do that for autocmds
     end,
   },
   {

@@ -9,7 +9,6 @@ return { -- Autocompletion
         return 'make install_jsregexp'
       end)(),
       dependencies = {
-        -- TODO: research friendly snippets
         {
           'rafamadriz/friendly-snippets',
           config = function()
