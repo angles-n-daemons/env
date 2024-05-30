@@ -9,9 +9,3 @@ vim.opt.clipboard = 'unnamedplus'
 vim.g.mapleader = ' '
 -- set localleader to \
 vim.g.maplocalleader = '\\'
-
--- TODO: get rid of the below
-vim.o.shiftwidth = 2
-vim.o.tabstop = 2
-vim.o.softtabstop = 2
-vim.o.expandtab = true
