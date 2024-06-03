@@ -1,0 +1,7 @@
+things
+ - look into neoconf for project environment setup
+ - quickfix options don't come up 
+ - create a single snippet for myself
+
+dun
+ - nothing man
