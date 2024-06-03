@@ -31,7 +31,7 @@ cp ./tmux/.tmux.conf ~/.tmux.conf
 # Setup neovim configuration
 cp -r ./config/nvim ~/.config
 
-# Install ttyd (paused until font issue is resolved)
+# Install ttyd (ignored until font issue is resolved)
 # brew install ttyd
 # cp ./osx/LaunchAgents/ttyd.plist ~/Library/LaunchAgents/ttyd.plist
 # launchctl load ~/Library/LaunchAgents/ttyd.plist
