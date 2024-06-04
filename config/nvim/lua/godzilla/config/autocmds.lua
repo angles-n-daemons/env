@@ -10,7 +10,7 @@ vim.api.nvim_create_autocmd({ 'BufEnter' }, {
   callback = setActivePaneLines(true, '80'),
 })
 vim.api.nvim_create_autocmd({ 'BufLeave' }, {
-  callback = setActivePaneLines(true, ''),
+  callback = setActivePaneLines(false, ''),
 })
 
 -- highlight on yank
