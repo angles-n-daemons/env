@@ -64,8 +64,7 @@ return {
         open = false,
       },
       output_panel = {
-        enabled = true,
-        open = 'rightbelow vsplit | resize 30',
+        open = 'rightbelow vsplit',
       },
       status = {
         enabled = true,
