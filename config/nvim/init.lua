@@ -4,7 +4,7 @@ require 'godzilla.config.keymaps'
 require 'godzilla.config.autocmds'
 
 -- Plugin imports
-require 'godzilla.config.spec'
+local spec = require('godzilla.util.spec').spec
 spec 'godzilla.plugins.colors'
 spec 'godzilla.plugins.languages'
 spec 'godzilla.plugins.conform'
