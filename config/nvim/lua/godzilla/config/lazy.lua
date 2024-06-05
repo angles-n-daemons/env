@@ -1,3 +1,4 @@
+local LAZY_PLUGIN_SPEC = require('godzilla.util.spec').LAZY_PLUGIN_SPEC
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system {
