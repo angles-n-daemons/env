@@ -11,3 +11,6 @@ This is my untested development environment setup for OSX.
   - Go to Network
   - Click the Firewall tab
   - Toggle the on-off button
+- [optional] setup irc
+  - install irssi
+  - set auto login for [liberachat](https://github.com/shabble/irssi-docs/wiki/liberachat#configure-sasl-automated-log-in) (user angles-n-daemons)
