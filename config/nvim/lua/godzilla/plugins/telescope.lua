@@ -33,6 +33,7 @@ return {
     { '<leader>sd', '<cmd>Telescope diagnostics bufnr=0<cr>', desc = 'Document Diagnostics' },
     { '<leader>sD', '<cmd>Telescope diagnostics<cr>', desc = 'Workspace Diagnostics' },
     { '<leader>sH', telescope('find_files', { hidden = true }), desc = 'Workspace Diagnostics' },
+    { '<leader>sn', '<cmd>Telescope notify<cr>', desc = '[S]earch [N]otifications' },
   },
   init = function()
     require('telescope').setup {}

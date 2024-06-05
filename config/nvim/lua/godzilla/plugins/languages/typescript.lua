@@ -34,6 +34,10 @@ local formattersByFiletype = {
   ['graphql'] = { 'prettier' },
   ['handlebars'] = { 'prettier' },
 }
+local snippet_additions = {
+  ['javascript'] = { 'jsdoc', 'react' },
+  ['typescript'] = { 'jsdoc', 'react' },
+}
 
 return {
   -- add treesitter filetypes which will not autoinstall
@@ -55,6 +59,13 @@ return {
     'stevearc/conform.nvim',
     optional = true,
     opts = extendOptsTable('formatters_by_ft', formattersByFiletype),
+  },
+
+  -- add additional snippets
+  {
+    'rafamadriz/friendly-snippets',
+    optional = true,
+    opts = extendOptsTable('snippet_additions', snippet_additions),
   },
 
   -- add testing settings

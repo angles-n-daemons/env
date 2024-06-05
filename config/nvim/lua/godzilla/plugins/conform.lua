@@ -7,7 +7,7 @@ return {
   event = { 'BufWritePre' },
   opts = {
     format_on_save = {
-      timeout_ms = 300,
+      timeout_ms = 500,
       async = false,
       quiet = false,
       lsp_fallback = true,

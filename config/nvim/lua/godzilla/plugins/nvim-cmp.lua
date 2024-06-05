@@ -11,8 +11,11 @@ return { -- Autocompletion
       dependencies = {
         {
           'rafamadriz/friendly-snippets',
-          config = function()
+          config = function(_, opts)
             require('luasnip.loaders.from_vscode').lazy_load()
+            for ft, snippets in pairs(opts.snippet_additions) do
+              require('luasnip').filetype_extend(ft, snippets)
+            end
           end,
         },
       },
@@ -50,7 +53,7 @@ return { -- Autocompletion
 
         -- confirm / cancel
         ['<TAB>'] = cmp.mapping.confirm { select = true },
-        ['<C-e'] = cmp.mapping {
+        ['<C-e>'] = cmp.mapping {
           i = cmp.mapping.abort(),
           c = cmp.mapping.close(),
         },
@@ -59,8 +62,8 @@ return { -- Autocompletion
 
         -- Navigate snippets
         ['<C-l>'] = cmp.mapping(function()
-          if luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
+          if luasnip.jumpable() then
+            luasnip.jump()
           end
         end, { 'i', 's' }),
         ['<C-h>'] = cmp.mapping(function()
@@ -75,9 +78,9 @@ return { -- Autocompletion
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
       },
       sources = {
+        { name = 'luasnip' },
         { name = 'nvim_lsp' },
         { name = 'copilot' },
-        { name = 'luasnip' },
         { name = 'buffer' },
         { name = 'path' },
       },
