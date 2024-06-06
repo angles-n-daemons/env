@@ -8,6 +8,7 @@ return {
     { '<S-l>', '<cmd>BufferLineCycleNext<cr>', desc = 'Next Buffer' },
     { '<leader>bp', '<Cmd>BufferLineTogglePin<CR>', desc = '[B]uffer [P]in' },
     { '<leader>bo', '<Cmd>BufferLineGroupClose ungrouped<CR>', desc = 'Delete Non-Pinned Buffers' },
+    { '<leader>bd', '<Cmd>bp<bar>sp<bar>bn<bar>bd<CR>', desc = '[B]uffer [D]elete' },
   },
   opts = {
     options = {
