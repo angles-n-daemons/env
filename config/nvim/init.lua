@@ -5,6 +5,7 @@ require 'godzilla.config.autocmds'
 
 -- Plugin imports
 local spec = require('godzilla.util.spec').spec
+spec 'godzilla.plugins.bufferline'
 spec 'godzilla.plugins.colors'
 spec 'godzilla.plugins.languages'
 spec 'godzilla.plugins.conform'

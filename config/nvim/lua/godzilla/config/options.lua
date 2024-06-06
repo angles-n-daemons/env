@@ -11,4 +11,4 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = '\\'
 
 -- Minimum number of screen lines to keep above and below cursor
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 5
