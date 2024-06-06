@@ -40,6 +40,6 @@ map('i', '.', '.<c-g>u')
 map('i', ';', ';<c-g>u')
 
 -- save file
-map({ 'i', 'x', 'n', 's' }, '<C-s>', '<cmd>w<cr><esc>', { desc = 'Save File' })
+map({ 'i', 'x', 'n', 's' }, '<C-w>', '<cmd>w<cr><esc>', { desc = 'Save File' })
 -- quit
 map({ 'i', 'x', 'n', 's' }, '<C-q>', '<cmd>q<cr><esc>', { desc = 'Quit' })

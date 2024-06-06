@@ -9,3 +9,6 @@ vim.opt.clipboard = 'unnamedplus'
 vim.g.mapleader = ' '
 -- set localleader to \
 vim.g.maplocalleader = '\\'
+
+-- Minimum number of screen lines to keep above and below cursor
+vim.opt.scrolloff = 10
