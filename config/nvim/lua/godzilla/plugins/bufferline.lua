@@ -11,8 +11,9 @@ return {
   },
   opts = {
     options = {
-      diagnostics = 'nvim_lsp',
+      separator_style = 'slant',
       always_show_bufferline = true,
+      diagnostics = 'nvim_lsp',
       offsets = {
         {
           filetype = 'neo-tree',
