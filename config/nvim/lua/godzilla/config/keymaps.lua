@@ -47,6 +47,4 @@ map({ 'i', 'x', 'n', 's' }, '<C-q>', '<cmd>q<cr><esc>', { desc = 'Quit' })
 -- stylua: ignore start
 
 -- toggle options
-map("n", "<leader>uf", function() LazyVim.format.toggle() end, { desc = "Toggle Auto Format (Global)" })
-map("n", "<leader>ul", function() LazyVim.toggle.number() end, { desc = "Toggle Line Numbers" })
-map("n", "<leader>ud", function() LazyVim.toggle.diagnostics() end, { desc = "Toggle Diagnostics" })
+map("n", "<leader>ul", '<Cmd>number!<cr>', { desc = "Toggle Line Numbers" })
