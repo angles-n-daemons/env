@@ -35,20 +35,6 @@ return {
     opts = extendOptsTable('formatters_by_ft', formattersByFiletype),
   },
 
-  -- add testing settings
-  {
-    'nvim-neotest/neotest',
-    dependencies = {
-      'nvim-neotest/neotest-go',
-    },
-    opts = function(_, opts)
-      local adapter = require 'neotest-go' {
-        recursive_run = true,
-      }
-      extendOptsList('adapters', { adapter })(_, opts)
-    end,
-  },
-
   -- debug adapter configuration
   {
     'mfussenegger/nvim-dap',
