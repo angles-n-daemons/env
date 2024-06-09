@@ -1,17 +1,42 @@
+local function configureDapSessionKeys(dap)
+  local keys = {
+    { 'n', dap.step_over, desc = 'Debug: Step Over' },
+    { 's', dap.step_into, desc = 'Debug: Step Into' },
+    { 'o', dap.step_out, desc = 'Debug: Step Out' },
+    { 'c', dap.continue, desc = 'Debug: Continue' },
+    { 'q', dap.terminate, desc = 'Debug: Terminate' },
+  }
+
+  local function setSessionKeys()
+    for i = 1, #keys do
+      vim.keymap.set('n', keys[i][1], keys[i][2], { desc = keys[i]['desc'], silent = true })
+    end
+  end
+  local function clearSessionKeys()
+    if not next(dap.sessions()) then
+      for i = 1, #keys do
+        pcall(vim.keymap.del, 'n', keys[i][1])
+      end
+    end
+  end
+
+  dap.listeners.after.event_initialized['me.dap'] = setSessionKeys
+  dap.listeners.after.event_terminated['me.dap'] = clearSessionKeys
+  dap.listeners.after.disconnect['me.dap'] = clearSessionKeys
+end
+
 return {
   'mfussenegger/nvim-dap',
   dependencies = {
     'rcarriga/nvim-dap-ui',
     'nvim-neotest/nvim-nio',
     'williamboman/mason.nvim',
-    'jay-babu/mason-nvim-dap.nvim',
     'folke/neoconf.nvim',
   },
   -- stylua: ignore
   keys = {
     { "<leader>dB", function() require("dap").set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, desc = "Breakpoint Condition" },
     { "<leader>db", function() require("dap").toggle_breakpoint() end,                                    desc = "Toggle Breakpoint" },
-    { "<C-c>",      function() require("dap").continue() end,                                             desc = "Continue" },
     { "<leader>dd", function() require("dap").continue() end,                                             desc = "Debug" },
     { "<leader>dC", function() require("dap").run_to_cursor() end,                                        desc = "Run to Cursor" },
     { "<C-s>", function() require("dap").step_into() end,                                            desc = "Step Into" },
@@ -44,13 +69,11 @@ return {
     vim.fn.sign_define('DapBreakpointRejected', { text = ' ', texthl = 'DiagnosticError' })
     vim.fn.sign_define('DapLogPoint', { text = '.>', texthl = 'DiagnosticInfo' })
 
-    require('mason-nvim-dap').setup {
-      automatic_installation = true,
-    }
-
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
+
+    configureDapSessionKeys(dap)
 
     -- pass in adapter to language mappings
     require('dap.ext.vscode').load_launchjs(nil, { cppdbg = { 'c', 'cpp', 'rust', 'gp' } })
