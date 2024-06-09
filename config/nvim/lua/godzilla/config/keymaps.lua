@@ -42,7 +42,29 @@ map('i', ';', ';<c-g>u')
 -- save file
 map({ 'x', 'n', 's' }, '<C-w>', '<cmd>w<cr><esc>', { desc = 'Save File' })
 -- close buffer
-map({ 'i', 'x', 'n', 's' }, '<C-q>', '<Cmd>bp<bar>sp<bar>bn<bar>bd<CR>', { desc = 'Close Buffer' })
+local function countListedBuffers()
+  local bufs = vim.api.nvim_list_bufs()
+  local loadedCount = 0
+  for i = 1, #bufs do
+    if vim.fn.getbufinfo(bufs[i])[1].listed == 1 then
+      loadedCount = loadedCount + 1
+    end
+  end
+  return loadedCount
+end
+local function closeBuffer()
+  local hasNextBuffer = countListedBuffers() > 0
+  local bufferModified = vim.api.nvim_get_option_value('modified', { buf = 0 })
+
+  if bufferModified then
+    require 'notify'('Buffer is unsaved', 'error', { title = 'Error' })
+  elseif hasNextBuffer then
+    vim.cmd 'bp | sp | bn | bd'
+  else
+    vim.cmd 'bd'
+  end
+end
+map({ 'i', 'x', 'n', 's' }, '<C-q>', closeBuffer, { desc = 'Close Buffer' })
 -- close window
 map({ 'i', 'x', 'n', 's' }, '<C-c>', '<cmd>q<cr><esc>', { desc = 'Close Window' })
 

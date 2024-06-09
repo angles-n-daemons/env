@@ -1,6 +1,7 @@
 return { -- Autocompletion
   'hrsh7th/nvim-cmp',
   event = 'InsertEnter',
+  commit = 'a110e12',
   dependencies = {
     -- Snippet Engine & its associated nvim-cmp source
     {
