@@ -45,8 +45,6 @@ map({ 'x', 'n', 's' }, '<C-w>', '<cmd>w<cr><esc>', { desc = 'Save File' })
 map({ 'i', 'x', 'n', 's' }, '<C-q>', '<Cmd>bp<bar>sp<bar>bn<bar>bd<CR>', { desc = 'Close Buffer' })
 -- close window
 map({ 'i', 'x', 'n', 's' }, '<C-c>', '<cmd>q<cr><esc>', { desc = 'Close Window' })
--- exit for sure
-map({ 'i', 'x', 'n', 's' }, 'qq', '<cmd>qa!<cr><esc>', { desc = 'Force Quit' })
 
 
 -- stylua: ignore start
