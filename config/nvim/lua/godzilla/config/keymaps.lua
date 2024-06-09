@@ -29,10 +29,10 @@ map({ 'n', 'x' }, 'j', 'v:count == 0 ? "gj" : "j"', { expr = true, silent = true
 map({ 'n', 'x' }, 'k', 'v:count == 0 ? "gk" : "k"', { expr = true, silent = true })
 
 -- resize window using <ctrl> arrow keys
-map('n', '<C-Up>', '<cmd>resize +2<cr>', { desc = 'Increase Window Height' })
-map('n', '<C-Down>', '<cmd>resize -2<cr>', { desc = 'Decrease Window Height' })
-map('n', '<C-Left>', '<cmd>vertical resize -2<cr>', { desc = 'Decrease Window Width' })
-map('n', '<C-Right>', '<cmd>vertical resize +2<cr>', { desc = 'Increase Window Width' })
+map('n', '_', '<cmd>resize -5<cr>', { desc = 'Decrease Window Height' })
+map('n', '+', '<cmd>resize +5<cr>', { desc = 'Increase Window Height' })
+map('n', '-', '<cmd>vertical resize -10<cr>', { desc = 'Decrease Window Width' })
+map('n', '=', '<cmd>vertical resize +10<cr>', { desc = 'Increase Window Width' })
 
 -- Add undo break-points
 map('i', ',', ',<c-g>u')
