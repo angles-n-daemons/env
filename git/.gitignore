@@ -2,8 +2,5 @@
 # Ignore editor swap files
 *.sw[klmnop]
 
-# Ignore debug configurations for local development
-.vimspector.json
-
-# Ignore tmux project configurations
-.tmuxp.yaml
+# Personal project settings
+.godzilla

@@ -20,7 +20,7 @@ local colorConfigs = {
 -- PaperColor
 -- okcolors
 
-local color = colorConfigs[CONFIG.language] or colorConfigs.default
+local color = colorConfigs[SETTINGS.language] or colorConfigs.default
 color.lazy = false
 color.priority = 1000
 

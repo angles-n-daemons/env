@@ -10,10 +10,10 @@ local function readFileJSON(filename)
     end
   end
   local contents = table.concat(lines, '\n')
-  return assert(vim.json.decode(contents), 'settings.json must contain a JSON object')
+  return assert(vim.json.decode(contents), 'nvim.json must contain a JSON object')
 end
 
 return function()
   -- todo fail gracefully
-  return readFileJSON '.godzilla/settings.json' or {}
+  return readFileJSON '.godzilla/nvim.json' or {}
 end

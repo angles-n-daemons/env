@@ -7,7 +7,7 @@ local logo = [[
  ╚═════╝  ╚═════╝ ╚═════╝ ╚══════╝╚═╝╚══════╝╚══════╝╚═╝  ╚═╝
 ]]
 
-if CONFIG.language == 'python' then
+if SETTINGS.language == 'python' then
   logo = [[
                                 __               
                                /  |              
@@ -27,7 +27,7 @@ $$/        $$$$$$/
   -- line length is 50, [ ] takes up 4 chars, want to subtract half the version to center
   local padding = string.rep(' ', 14 - (#version / 2))
   logo = logo .. '\n' .. padding .. '[ ' .. version .. ' ]'
-elseif CONFIG.language == 'typescript' then
+elseif SETTINGS.language == 'typescript' then
   logo = [[
    /\\\                                  /\\\                           
  /\\\\\\\\\\\  /\\\\\\\\\\  /\\\    /\\\ \///     /\\\\\  /\\\\\        
@@ -41,7 +41,7 @@ elseif CONFIG.language == 'typescript' then
   version = version.gsub(version, '\n', ' ')
   local padding = string.rep(' ', 12 - (#version / 2))
   logo = logo .. '\n' .. padding .. '[ ' .. version .. ' ]'
-elseif CONFIG.language == 'go' then
+elseif SETTINGS.language == 'go' then
   logo = [[
                   _                    ,_--~~~~~---_         
                  (_)            _,,,*^___      ____``*g*\*, 
@@ -52,7 +52,7 @@ elseif CONFIG.language == 'go' then
    __/ |                         }        [______]         I  
   |___/                          ]         |_|_|           |  
   ]]
-elseif CONFIG.language == 'c' then
+elseif SETTINGS.language == 'c' then
   logo = [[
   
  ██████       ██    ██ ████ ███    ███ 
@@ -62,7 +62,7 @@ elseif CONFIG.language == 'c' then
  ██████         ████   ████ ██      ██ 
                                      
   ]]
-elseif CONFIG.language == 'lua' then
+elseif SETTINGS.language == 'lua' then
   logo = [[
     _/                                  _/                 
    _/  _/    _/    _/_/_/  _/      _/      _/_/_/  _/_/    
@@ -70,7 +70,7 @@ elseif CONFIG.language == 'lua' then
  _/  _/    _/  _/    _/    _/  _/    _/  _/    _/    _/    
 _/    _/_/_/    _/_/_/      _/      _/  _/    _/    _/     
   ]]
-elseif CONFIG.language == 'rust' then
+elseif SETTINGS.language == 'rust' then
   logo = [[
  .----------------.  .----------------.  .----------------.  .----------------.  .----------------. 
 | .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |

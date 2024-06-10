@@ -1,5 +1,5 @@
-CONFIG = require 'godzilla.config.project'()
-vim.print(CONFIG.language)
+SETTINGS = require 'godzilla.config.settings'()
+vim.print(SETTINGS.language)
 
 require 'godzilla.config.options'
 require 'godzilla.config.languages'
