@@ -1,3 +1,6 @@
+CONFIG = require 'godzilla.config.project'()
+vim.print(CONFIG.language)
+
 require 'godzilla.config.options'
 require 'godzilla.config.languages'
 require 'godzilla.config.keymaps'
@@ -31,5 +34,3 @@ spec 'godzilla.plugins.vim-tmux-navigator'
 spec 'godzilla.plugins.which-key'
 spec 'godzilla.plugins.zoomwintab'
 require 'godzilla.config.lazy'
-
-require 'godzilla.config.colors'
