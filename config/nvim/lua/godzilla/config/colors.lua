@@ -2,7 +2,7 @@
 -- some colorschemes require manual setting of termguicolors
 vim.cmd 'set termguicolors'
 
-local color = 'three-firewatch'
+local color = 'everforest'
 if LANGUAGE == 'python' then
   color = 'gruvbox'
 elseif LANGUAGE == 'typescript' then

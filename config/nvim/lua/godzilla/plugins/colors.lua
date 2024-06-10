@@ -10,4 +10,5 @@ return {
   { 'e-q/okcolors.nvim', name = 'okcolors', lazy = false, priority = 1000 },
   { 'zortax/three-firewatch', lazy = false, priority = 1000 },
   { 'miikanissi/modus-themes.nvim', lazy = false, priority = 1000 },
+  { 'neanias/everforest-nvim', lazy = false, priority = 1000 },
 }
