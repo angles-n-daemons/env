@@ -12,5 +12,6 @@ return {
   },
   keys = {
     { '<leader>lg', '<cmd>LazyGit<cr>', desc = 'LazyGit' },
+    { '<leader>gP', '<cmd>!git push --no-verify<cr>', desc = '[G]it [P]ush' },
   },
 }
