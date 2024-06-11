@@ -1,13 +1,10 @@
-local typescript = require 'godzilla.plugins.languages.typescript'
-local lua = require 'godzilla.plugins.languages.lua'
-local python = require 'godzilla.plugins.languages.python'
-local go = require 'godzilla.plugins.languages.go'
-local cpp = require 'godzilla.plugins.languages.cpp'
+if SETTINGS.language == nil then
+  return {}
+end
 
-return {
-  typescript,
-  lua,
-  python,
-  go,
-  cpp,
-}
+local status, lang = pcall(require, 'godzilla.plugins.languages.' .. SETTINGS.language)
+if status then
+  return lang
+else
+  return {}
+end

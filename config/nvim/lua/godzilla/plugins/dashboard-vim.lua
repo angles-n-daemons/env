@@ -52,7 +52,7 @@ elseif SETTINGS.language == 'go' then
    __/ |                         }        [______]         I  
   |___/                          ]         |_|_|           |  
   ]]
-elseif SETTINGS.language == 'c' then
+elseif SETTINGS.language == 'cpp' then
   logo = [[
   
  ██████       ██    ██ ████ ███    ███ 

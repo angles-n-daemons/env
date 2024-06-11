@@ -13,7 +13,7 @@ local colorConfigs = {
   go = { 'zortax/three-firewatch', config = setColorScheme 'three-firewatch' },
   typescript = { 'catppuccin', config = setColorScheme 'catppuccin' },
   lua = { 'folke/tokyonight.nvim', config = setColorScheme 'tokyonight' },
-  c = { 'miikanissi/modus-themes.nvim', config = setColorScheme 'modus' },
+  cpp = { 'miikanissi/modus-themes.nvim', config = setColorScheme 'modus' },
 }
 -- additional colorschemes
 -- melange
