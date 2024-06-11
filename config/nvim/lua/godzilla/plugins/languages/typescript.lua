@@ -44,6 +44,7 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     optional = true,
+    keys = { 'pp', "echo 'lua loaded'" },
     opts = extendOptsList('ensure_installed', parsers),
   },
 
