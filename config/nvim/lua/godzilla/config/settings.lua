@@ -14,6 +14,13 @@ local function readFileJSON(filename)
 end
 
 return function()
-  -- todo fail gracefully
-  return readFileJSON '.godzilla/nvim.json' or {}
+  local settings = readFileJSON '.godzilla/nvim.json' or {}
+
+  -- Override variables from environment
+  local envLang = os.getenv 'LANGUAGE'
+  if envLang ~= nil then
+    settings.language = envLang
+  end
+
+  return settings
 end
