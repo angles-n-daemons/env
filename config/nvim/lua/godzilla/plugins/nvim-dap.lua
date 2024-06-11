@@ -74,8 +74,5 @@ return {
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
     configureDapSessionKeys(dap)
-
-    -- pass in adapter to language mappings
-    require('dap.ext.vscode').load_launchjs(nil, { cppdbg = { 'c', 'cpp', 'rust', 'gp' } })
   end,
 }
