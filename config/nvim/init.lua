@@ -1,7 +1,6 @@
 SETTINGS = require 'godzilla.config.settings'()
 
 require 'godzilla.config.options'
-require 'godzilla.config.languages'
 require 'godzilla.config.keymaps'
 require 'godzilla.config.autocmds'
 
@@ -9,7 +8,7 @@ require 'godzilla.config.autocmds'
 local spec = require('godzilla.util.spec').spec
 spec 'godzilla.plugins.bufferline'
 spec 'godzilla.plugins.colors'
-spec 'godzilla.plugins.language'
+spec 'godzilla.plugins.language' -- variable based on language setting
 spec 'godzilla.plugins.conform'
 -- spec 'godzilla.plugins.copilot'
 spec 'godzilla.plugins.dashboard-vim'

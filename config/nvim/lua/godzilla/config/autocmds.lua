@@ -44,6 +44,10 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
+-- set kotlin syntax for greenpoint files
+vim.cmd [[autocmd BufNewFile,BufRead *.gp   set syntax=kotlin]]
+
+-- command to save configuration
 vim.api.nvim_create_user_command('SaveConfig', function()
   local handle = io.popen './set_config.sh'
   if handle == nil then
