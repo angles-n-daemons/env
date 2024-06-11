@@ -14,7 +14,7 @@ return { -- Autocompletion
           'rafamadriz/friendly-snippets',
           config = function(_, opts)
             require('luasnip.loaders.from_vscode').lazy_load()
-            for ft, snippets in pairs(opts.snippet_additions) do
+            for ft, snippets in pairs(opts.snippet_additions or {}) do
               require('luasnip').filetype_extend(ft, snippets)
             end
           end,

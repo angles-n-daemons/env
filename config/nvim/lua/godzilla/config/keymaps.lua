@@ -53,15 +53,16 @@ local function countListedBuffers()
   return loadedCount
 end
 local function closeBuffer()
-  local hasNextBuffer = countListedBuffers() > 0
+  local numListedBuffers = countListedBuffers()
   local bufferModified = vim.api.nvim_get_option_value('modified', { buf = 0 })
 
   if bufferModified then
     require 'notify'('Buffer is unsaved', 'error', { title = 'Error' })
-  elseif hasNextBuffer then
+  elseif numListedBuffers > 1 then
     vim.cmd 'bp | sp | bn | bd'
-  else
+  elseif numListedBuffers == 1 then
     vim.cmd 'bd'
+    vim.cmd 'Dashboard'
   end
 end
 map({ 'i', 'x', 'n', 's' }, '<C-q>', closeBuffer, { desc = 'Close Buffer' })
