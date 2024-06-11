@@ -12,6 +12,12 @@ return {
   },
   keys = {
     { '<leader>lg', '<cmd>LazyGit<cr>', desc = 'LazyGit' },
-    { '<leader>gP', '<cmd>!git push --no-verify<cr>', desc = '[G]it [P]ush' },
+    {
+      '<leader>gP',
+      function()
+        os.execute 'git push --no-verify'
+      end,
+      desc = '[G]it [P]ush',
+    },
   },
 }

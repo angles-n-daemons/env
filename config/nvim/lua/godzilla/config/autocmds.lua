@@ -43,3 +43,13 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.keymap.set('n', 'q', '<cmd>close<cr>', { buffer = event.buf, silent = true })
   end,
 })
+
+vim.api.nvim_create_user_command('SaveConfig', function()
+  local handle = io.popen './set_config.sh'
+  if handle == nil then
+    return require 'notify'('Unable to save configuration', 'error', { title = 'Godzilla Dev' })
+  end
+  local result = handle:read '*a'
+  handle:close()
+  require 'notify'(result, 'info', { title = 'Godzilla Dev' })
+end, {})
