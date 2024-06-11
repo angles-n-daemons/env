@@ -9,14 +9,27 @@ return { -- Autocompletion
       build = (function()
         return 'make install_jsregexp'
       end)(),
+      opts = {
+        history = true,
+        updateevents = 'TextChanged,TextChangedI',
+        enable_autosnippets = true, -- unsure if this is worthe keeping
+        ext_opts = {},
+      },
       dependencies = {
         {
           'rafamadriz/friendly-snippets',
           config = function(_, opts)
+            -- setup luasnip
+            require('luasnip').setup(opts)
+
+            -- load vscode snippets
             require('luasnip.loaders.from_vscode').lazy_load()
+
+            -- load additional snippets for given filetypes
             for ft, snippets in pairs(opts.snippet_additions or {}) do
               require('luasnip').filetype_extend(ft, snippets)
             end
+
             -- load personal snippets
             require 'godzilla.snippets'
           end,
