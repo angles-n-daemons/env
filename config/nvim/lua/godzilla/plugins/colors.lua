@@ -11,7 +11,7 @@ local colorConfigs = {
   default = { 'neanias/everforest-nvim', config = setColorScheme 'everforest' },
   python = { 'ellisonleao/gruvbox.nvim', config = setColorScheme 'gruvbox' },
   go = { 'zortax/three-firewatch', config = setColorScheme 'three-firewatch' },
-  typescript = { 'catppuccin', config = setColorScheme 'catppuccin' },
+  typescript = { 'catppuccin/nvim', name = 'catppuccin', config = setColorScheme 'catppuccin' },
   lua = { 'folke/tokyonight.nvim', config = setColorScheme 'tokyonight' },
   cpp = { 'miikanissi/modus-themes.nvim', config = setColorScheme 'modus' },
 }
