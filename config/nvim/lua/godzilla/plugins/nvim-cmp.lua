@@ -17,6 +17,8 @@ return { -- Autocompletion
             for ft, snippets in pairs(opts.snippet_additions or {}) do
               require('luasnip').filetype_extend(ft, snippets)
             end
+            -- load personal snippets
+            require 'godzilla.snippets'
           end,
         },
       },
