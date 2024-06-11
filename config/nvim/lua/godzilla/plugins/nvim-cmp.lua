@@ -65,15 +65,15 @@ return { -- Autocompletion
 
         -- Navigate snippets
         ['<C-l>'] = cmp.mapping(function()
-          if luasnip.jumpable() then
-            luasnip.jump()
+          if luasnip.jumpable(1) then
+            luasnip.jump(1)
           end
-        end, { 'i', 's' }),
+        end, { 'i' }),
         ['<C-h>'] = cmp.mapping(function()
           if luasnip.jumpable(-1) then
             luasnip.jump(-1)
           end
-        end, { 'i', 's' }),
+        end, { 'i' }),
 
         -- optional formattings settings
 
