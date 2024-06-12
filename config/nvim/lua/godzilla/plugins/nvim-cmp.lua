@@ -9,19 +9,10 @@ return { -- Autocompletion
       build = (function()
         return 'make install_jsregexp'
       end)(),
-      opts = {
-        history = true,
-        updateevents = 'TextChanged,TextChangedI',
-        enable_autosnippets = true, -- unsure if this is worthe keeping
-        ext_opts = {},
-      },
       dependencies = {
         {
           'rafamadriz/friendly-snippets',
           config = function(_, opts)
-            -- setup luasnip
-            require('luasnip').setup(opts)
-
             -- load vscode snippets
             require('luasnip.loaders.from_vscode').lazy_load()
 
@@ -45,7 +36,13 @@ return { -- Autocompletion
     -- See `:help cmp`
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
-    luasnip.config.setup { store_selection_keys = '<Tab>' }
+    luasnip.config.setup {
+      store_selection_keys = '<Tab>',
+      history = true,
+      updateevents = 'TextChanged,TextChangedI',
+      enable_autosnippets = true, -- unsure if this is worthe keeping
+      ext_opts = {},
+    }
 
     cmp.setup {
       snippet = {
