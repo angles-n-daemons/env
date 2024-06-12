@@ -68,8 +68,10 @@ end
 map({ 'i', 'x', 'n', 's' }, '<C-q>', closeBuffer, { desc = 'Close Buffer' })
 -- force close buffer
 map({ 'n', 's' }, '<C-x>', '<cmd>bd!<cr>', { desc = 'Force Close Buffer' })
--- close window
-map({ 'i', 'x', 'n', 's' }, '<C-c>', '<cmd>q<cr><esc>', { desc = 'Close Window' })
+
+-- CTRL-C go to normal mode, or exit vim
+map({ 'n' }, '<C-c>', '<cmd>q<cr><esc>', { desc = 'Close Window' })
+map({ 'i', 'x', 's' }, '<C-c>', '<esc>', { desc = 'Go to Normal Mode' })
 
 
 -- stylua: ignore start
