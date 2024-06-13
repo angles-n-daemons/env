@@ -4,7 +4,9 @@ local function configureDapSessionKeys(dap)
     { 's', dap.step_into, desc = 'Debug: Step Into' },
     { 'o', dap.step_out, desc = 'Debug: Step Out' },
     { 'c', dap.continue, desc = 'Debug: Continue' },
-    { 'q', dap.terminate, desc = 'Debug: Terminate' },
+    { 't', dap.terminate, desc = 'Debug: Terminate' },
+    { 'd', dap.down, desc = 'Debug: Down' },
+    { 'u', dap.up, desc = 'Debug: Up' },
   }
 
   local function setSessionKeys()
@@ -35,22 +37,19 @@ return {
   },
   -- stylua: ignore
   keys = {
-    { "<leader>dB", function() require("dap").set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, desc = "Breakpoint Condition" },
-    { "<leader>db", function() require("dap").toggle_breakpoint() end,                                    desc = "Toggle Breakpoint" },
-    { "<leader>dd", function() require("dap").continue() end,                                             desc = "Debug" },
-    { "<leader>dC", function() require("dap").run_to_cursor() end,                                        desc = "Run to Cursor" },
-    { "<C-s>", function() require("dap").step_into() end,                                            desc = "Step Into" },
-    { "<leader>do", function() require("dap").step_out() end,                                             desc = "Step Out" },
-    { "<C-n>",      function() require("dap").step_over() end,                                            desc = "Step Over" },
-    { "<leader>dl", function() require("dap").run_last() end,                                             desc = "Run Last" },
-    { "<leader>dr", function() require("dap").repl.toggle() end,                                          desc = "Toggle REPL" },
-    { "<leader>ds", function() require("dap").session() end,                                              desc = "Session" },
-    { "<leader>dC", function() require("dap").run_to_cursor() end,                                        desc = "Close" },
-    { "<leader>dt", function() require("dap").terminate() end,                                            desc = "Terminate" },
-    { "<leader>dw", function() require("dap.ui.widgets").hover() end,                                     desc = "Widgets" },
-    { "<F7>",       function() require('dapui').toggle() end,                                             desc = "Debug: see last sessions result" },
     -- requires neotest to be installed
     { "<leader>td", function() require("neotest").run.run({ strategy = "dap" }) end,                      desc = "Debug Nearest" },
+    { "<leader>dd", function() require("dap").continue() end,                                             desc = "Debug" },
+    -- breakpoints
+    { "<leader>dB", function() require("dap").set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, desc = "Breakpoint Condition" },
+    { "<leader>db", function() require("dap").toggle_breakpoint() end,                                    desc = "Toggle Breakpoint" },
+    -- stuff mostly unused
+    { "<leader>dC", function() require("dap").run_to_cursor() end,                                        desc = "Run to Cursor" },
+    { "<leader>dl", function() require("dap").run_last() end,                                             desc = "Run Last" },
+    { "<leader>dw", function() require("dap.ui.widgets").hover() end,                                     desc = "Widgets" },
+    { "<leader>dr", function() require("dap").repl.toggle() end,                                          desc = "Toggle REPL" },
+    { "<leader>ds", function() require("dap").session() end,                                              desc = "Session" },
+    { "<F7>",       function() require('dapui').toggle() end,                                             desc = "Debug: see last sessions result" },
   },
   config = function()
     local dap, dapui = require 'dap', require 'dapui'
