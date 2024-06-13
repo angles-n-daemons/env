@@ -78,3 +78,7 @@ map({ 'i', 'x', 's' }, '<C-c>', '<esc>', { desc = 'Go to Normal Mode' })
 
 -- toggle options
 map("n", "<leader>ul", '<Cmd>number!<cr>', { desc = "Toggle Line Numbers" })
+
+-- remap <c-_> to <c-/> for terminal support
+map("n", "<c-_>", "<c-/>", { remap = true, desc = "which_key_ignore" })
+map("t", "<c-_>", "<c-/>", { remap = true, desc = "which_key_ignore" })
