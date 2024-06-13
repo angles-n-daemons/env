@@ -23,4 +23,13 @@ return {
     'stevearc/conform.nvim',
     opts = extendOptsTable('formatters_by_ft', formattersByFiletype),
   },
+
+  -- add repl settings
+  {
+    'akinsho/toggleterm.nvim',
+    version = '*',
+    keys = {
+      { '<leader>rr', function() require('toggleterm').exec_command('cmd=lua') end, desc = '[R]un [R]epl' },
+    }
+  },
 }
