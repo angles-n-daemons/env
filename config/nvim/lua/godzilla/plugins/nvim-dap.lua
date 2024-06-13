@@ -7,7 +7,7 @@ local function configureDapSessionKeys(dap)
     { 't', dap.terminate, desc = 'Debug: Terminate' },
     { 'd', dap.down, desc = 'Debug: Down' },
     { 'u', dap.up, desc = 'Debug: Up' },
-    { 'b', dap.up, desc = 'Debug: Toggle Breakpoint' },
+    { 'b', dap.toggle_breakpoint, desc = 'Debug: Toggle Breakpoint' },
   }
 
   local function setSessionKeys()
