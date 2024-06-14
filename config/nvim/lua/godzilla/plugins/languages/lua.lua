@@ -1,5 +1,6 @@
 local extendOptsList = require('godzilla.util.opts').extendOptsList
 local extendOptsTable = require('godzilla.util.opts').extendOptsTable
+local wRepl = require('godzilla.util.terminal').wRepl
 
 local parsers = { 'lua', 'luadoc', 'luap' }
 local tools = { 'stylua', 'lua-language-server' }
@@ -27,9 +28,8 @@ return {
   -- add repl settings
   {
     'akinsho/toggleterm.nvim',
-    version = '*',
     keys = {
-      { '<leader>rr', function() require('toggleterm').exec_command('cmd=lua') end, desc = '[R]un [R]epl' },
-    }
+      { '<leader>rr', wRepl 'lua', desc = '[R]un [R]epl' },
+    },
   },
 }

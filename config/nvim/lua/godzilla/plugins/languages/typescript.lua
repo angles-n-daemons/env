@@ -1,5 +1,6 @@
 local extendOptsList = require('godzilla.util.opts').extendOptsList
 local extendOptsTable = require('godzilla.util.opts').extendOptsTable
+local wRepl = require('godzilla.util.terminal').wRepl
 
 -- local inlay_hints_settings = {
 --   includeInlayEnumMemberValueHints = true,
@@ -72,15 +73,8 @@ return {
   -- add repl settings
   {
     'akinsho/toggleterm.nvim',
-    version = '*',
     keys = {
-      {
-        '<leader>rr',
-        function()
-          require('toggleterm').exec_command 'cmd=node'
-        end,
-        desc = '[R]un [R]epl',
-      },
+      { '<leader>rr', wRepl 'node', desc = '[R]un [R]epl' },
     },
   },
 
