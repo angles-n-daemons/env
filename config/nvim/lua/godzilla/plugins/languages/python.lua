@@ -39,6 +39,21 @@ return {
     opts = extendOptsTable('formatters_by_ft', formattersByFiletype),
   },
 
+  -- add repl settings
+  {
+    'akinsho/toggleterm.nvim',
+    version = '*',
+    keys = {
+      {
+        '<leader>rr',
+        function()
+          require('toggleterm').exec_command 'cmd=python'
+        end,
+        desc = '[R]un [R]epl',
+      },
+    },
+  },
+
   -- add testing settings
   {
     'nvim-neotest/neotest',

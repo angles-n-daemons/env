@@ -8,8 +8,6 @@ local fmt = require('luasnip.extras.fmt').fmt
 local i = ls.insert_node
 local rep = require('luasnip.extras').rep
 
-vim.print 'loading'
-vim.print(s('ddt_fmt', fmt('ddt', '-- $1 chlorinated $2 hydrocarbons $0 --')))
 ls.add_snippets('lua', {
   ls.parser.parse_snippet('ddt', '-- $1 chlorinated $2 hydrocarbons $0 --'),
   --s('ddt_fmt', fmt('ddt', '-- $1 chlorinated $2 hydrocarbons $0 --')),

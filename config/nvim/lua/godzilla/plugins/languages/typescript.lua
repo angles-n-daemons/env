@@ -69,6 +69,21 @@ return {
     opts = extendOptsTable('snippet_additions', snippet_additions),
   },
 
+  -- add repl settings
+  {
+    'akinsho/toggleterm.nvim',
+    version = '*',
+    keys = {
+      {
+        '<leader>rr',
+        function()
+          require('toggleterm').exec_command 'cmd=node'
+        end,
+        desc = '[R]un [R]epl',
+      },
+    },
+  },
+
   -- add testing settings
   {
     'nvim-neotest/neotest',
