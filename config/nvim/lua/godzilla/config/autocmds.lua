@@ -57,3 +57,6 @@ vim.api.nvim_create_user_command('SaveConfig', function()
   handle:close()
   require 'notify'(result, 'info', { title = 'Godzilla Dev' })
 end, {})
+
+-- setup greenpoint filetype handling
+vim.cmd [[au BufRead,BufNewFile *.gp		set filetype=greenpoint]]
