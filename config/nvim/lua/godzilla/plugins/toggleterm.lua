@@ -3,20 +3,12 @@ return {
   version = '*',
   keys = {
     {
-      '<C-/>',
+      '<C-t>',
       function()
         require('toggleterm').toggle()
       end,
       desc = 'Toggle Terminal',
-      mode = { 'n' },
-    },
-    {
-      '<C-/>',
-      function()
-        require('toggleterm').toggle()
-      end,
-      desc = 'Toggle Terminal',
-      mode = { 't' },
+      mode = { 'n', 't' },
     },
     {
       '<leader>rt',
