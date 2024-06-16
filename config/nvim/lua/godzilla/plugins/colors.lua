@@ -13,12 +13,13 @@ local colorConfigs = {
   go = { 'zortax/three-firewatch', config = setColorScheme 'three-firewatch' },
   typescript = { 'catppuccin/nvim', name = 'catppuccin', config = setColorScheme 'catppuccin' },
   lua = { 'folke/tokyonight.nvim', config = setColorScheme 'tokyonight' },
-  cpp = { 'miikanissi/modus-themes.nvim', config = setColorScheme 'modus' },
+  cpp = { 'rebelot/kanagawa.nvim', config = setColorScheme 'kanagawa' },
 }
 -- additional colorschemes
 -- melange
 -- PaperColor
 -- okcolors
+-- miikanissi/modus-themes.nvim
 
 local color = colorConfigs[SETTINGS.language] or colorConfigs.default
 color.lazy = false
