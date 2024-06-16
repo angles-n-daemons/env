@@ -1,7 +1,20 @@
 return {
   'folke/flash.nvim',
   event = 'VeryLazy',
-  opts = {},
+  opts = {
+    label = {
+      uppercase = true,
+      format = function(opts)
+        return { { string.upper(opts.match.label), opts.hl_group } }
+      end,
+    },
+    modes = {
+      search = {
+        enabled = true,
+        highlight = { backdrop = true },
+      },
+    },
+  },
   keys = {
     {
       's',
