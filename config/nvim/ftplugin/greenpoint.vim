@@ -4,3 +4,5 @@ setlocal expandtab
 setlocal autoindent
 setlocal smarttab
 set syntax=kotlin
+" somehow echoing this makes it real
+echo syntax
