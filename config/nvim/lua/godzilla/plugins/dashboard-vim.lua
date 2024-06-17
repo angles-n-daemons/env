@@ -117,7 +117,10 @@ return {
         footer = function()
           local stats = require('lazy').stats()
           local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-          return { '⚡ Neovim loaded ' .. stats.loaded .. '/' .. stats.count .. ' plugins in ' .. ms .. 'ms' }
+          local info = { '⚡ Neovim loaded ' .. stats.loaded .. '/' .. stats.count .. ' plugins in ' .. ms .. 'ms' }
+          local fortune = require('fortune').get_fortune()
+          local footer = vim.list_extend(info, fortune)
+          return footer
         end,
       },
     }
