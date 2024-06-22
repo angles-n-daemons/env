@@ -77,7 +77,7 @@ map({ 'i', 'x', 's' }, '<C-c>', '<esc>', { desc = 'Go to Normal Mode' })
 -- stylua: ignore start
 
 -- toggle options
-map("n", "<leader>ul", '<Cmd>number!<cr>', { desc = "Toggle Line Numbers" })
+map("n", "<leader>ul", '<Cmd>set number!<cr>', { desc = "Toggle Line Numbers" })
 
 -- remap <c-_> to <c-/> so I can bind <C-/>
 map("n", "<c-_>", "<c-/>", { remap = true, desc = "which_key_ignore" })
