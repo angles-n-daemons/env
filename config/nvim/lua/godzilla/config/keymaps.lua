@@ -82,6 +82,3 @@ map("n", "<leader>ul", '<Cmd>number!<cr>', { desc = "Toggle Line Numbers" })
 -- remap <c-_> to <c-/> so I can bind <C-/>
 map("n", "<c-_>", "<c-/>", { remap = true, desc = "which_key_ignore" })
 map("t", "<c-_>", "<c-/>", { remap = true, desc = "which_key_ignore" })
-
--- backspace does something in normal mode
-map("n", "<BS>", "dhi")
