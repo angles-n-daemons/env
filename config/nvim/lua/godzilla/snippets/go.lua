@@ -1,4 +1,4 @@
--- lua.lua
+-- go.lua
 -- angles-n-daemons
 
 local ls = require 'luasnip'
@@ -37,25 +37,61 @@ local function lb()
   return t { '', '' }
 end
 
--- collection of test snippets
-ls.cleanup()
- -- stylua: ignore
-ls.add_snippets('lua', {
-  ls.parser.parse_snippet(
-    { trig = 'ddt', docstring = 'I am a docstring guy' },
-    '-- $1 chlorinated $2 hydrocarbons $0 --'
-  ),
-  s('fndoc', { com(''), rep(1),  t(' '), i(4, '<desc>'), lb(), t('local function '), i(1, '<fn name>'), t('('), i(2), t(')'), lb(), i(3), lb(), t('end'), i(0)}),
+local function tab()
+  return t '\t'
+end
 
-  s('absindexexamples', {
-    com('abs: '), i(1, '<zabsolute>'), lb(),
-    com(''), f(function(args, snip)
-      return { args[1][1] .. ' ' .. args[2][1] .. ' returns ' .. args[3][1] }
-    end, {ai[1], ai[2][1], ai[2][2]}),
-    sn(2, {
-      t('local function '), i(1, '<fn>'), t('()'), lb(),
-      t('  return '), i(2), lb(),
-      t('end')
-    })
-  })
+ls.cleanup()
+ls.add_snippets('go', {
+  -- godoc
+  -- function
+  -- struct function
+  -- error exit
+  -- ternary
+  s('?var', {
+    t 'var ',
+    i(1, '<varname>'),
+    t ' ',
+    i(2, '<type>'),
+    lb(),
+
+    t 'if ',
+    i(3, '<condition>'),
+    t ' {',
+    lb(),
+    tab(),
+    rep(1),
+    t ' = ',
+    i(4, '<then>'),
+    lb(),
+
+    t '} else {',
+    lb(),
+    tab(),
+    rep(1),
+    t ' = ',
+    i(5, '<else>'),
+    lb(),
+    t '}',
+    i(0),
+  }),
+  s('?return', {
+    t 'if ',
+    i(1, '<condition>'),
+    t ' {',
+    lb(),
+    tab(),
+    t 'return ',
+    i(2, '<then>'),
+    lb(),
+
+    t '} else {',
+    lb(),
+    tab(),
+    t 'return ',
+    i(3, '<else>'),
+    lb(),
+    t '}',
+    i(0),
+  }),
 })
