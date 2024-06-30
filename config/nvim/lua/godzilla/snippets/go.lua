@@ -94,4 +94,29 @@ ls.add_snippets('go', {
     t '}',
     i(0),
   }),
+
+  -- for loops
+  s('for', {
+    isn(1, {
+      t 'for ',
+      i(1, 'i'),
+      t ' := 0; ',
+      rep(1),
+      t ' < ',
+      i(2, '<end>'),
+      t ';',
+      t ' ',
+      rep(1),
+      t '++ {',
+      lb(),
+      i(3, '<body>'),
+      lb(),
+    }, "$PARENT_INDENT\t"),
+    t '}',
+    lb(),
+  }),
+
+  -- for i := 0; i < 10; i++ {
+  --	sum += i
+  --}
 })

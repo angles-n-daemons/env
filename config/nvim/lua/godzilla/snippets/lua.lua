@@ -39,19 +39,21 @@ end
 
 -- collection of test snippets
 ls.cleanup()
- -- stylua: ignore
+-- stylua: ignore
 ls.add_snippets('lua', {
   ls.parser.parse_snippet(
     { trig = 'ddt', docstring = 'I am a docstring guy' },
     '-- $1 chlorinated $2 hydrocarbons $0 --'
   ),
-  s('fndoc', { com(''), rep(1),  t(' '), i(4, '<desc>'), lb(), t('local function '), i(1, '<fn name>'), t('('), i(2), t(')'), lb(), i(3), lb(), t('end'), i(0)}),
+  s('fndoc',
+    { com(''), rep(1), t(' '), i(4, '<desc>'), lb(), t('local function '), i(1, '<fn name>'), t('('), i(2), t(')'), lb(),
+      i(3), lb(), t('end'), i(0) }),
 
   s('absindexexamples', {
     com('abs: '), i(1, '<zabsolute>'), lb(),
     com(''), f(function(args, snip)
-      return { args[1][1] .. ' ' .. args[2][1] .. ' returns ' .. args[3][1] }
-    end, {ai[1], ai[2][1], ai[2][2]}),
+    return { args[1][1] .. ' ' .. args[2][1] .. ' returns ' .. args[3][1] }
+  end, { ai[1], ai[2][1], ai[2][2] }),
     sn(2, {
       t('local function '), i(1, '<fn>'), t('()'), lb(),
       t('  return '), i(2), lb(),
