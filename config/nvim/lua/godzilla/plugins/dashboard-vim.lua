@@ -90,6 +90,10 @@ local exploreCwd = function()
   require('neo-tree.command').execute { toggle = true, dir = vim.uv.cwd() }
 end
 
+local function getFortune()
+  return require('godzilla.util.fortune').getDashboardFortune()
+end
+
 return {
   'nvimdev/dashboard-nvim',
   opts = function()
@@ -118,7 +122,7 @@ return {
           local stats = require('lazy').stats()
           local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
           local info = { '⚡ Neovim loaded ' .. stats.loaded .. '/' .. stats.count .. ' plugins in ' .. ms .. 'ms' }
-          local fortune = require('fortune').get_fortune()
+          local fortune = getFortune()
           local footer = vim.list_extend(info, fortune)
           return footer
         end,

@@ -22,7 +22,7 @@ end
 local function getDashboardFortune(fortunes)
   local fortune = getFortune(fortunes)
   local lines = { ' ' }
-  for line, _ in string.gmatch(fortune, '[^\n]+') do
+  for line, _ in string.gmatch(fortune .. '\n', '([^\n]*)\n') do
     lines[#lines + 1] = line
   end
   return lines
