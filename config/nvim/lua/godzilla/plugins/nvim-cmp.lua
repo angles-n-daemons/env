@@ -61,8 +61,6 @@ return { -- Autocompletion
         -- scroll options
         ['<C-n>'] = cmp.mapping.select_next_item(),
         ['<C-p>'] = cmp.mapping.select_prev_item(),
-        --['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
 
         -- confirm / cancel
         ['<TAB>'] = cmp.mapping.confirm { select = true },
@@ -83,6 +81,12 @@ return { -- Autocompletion
           if luasnip.jumpable(-1) then
             luasnip.jump(-1)
           end
+        end, { 'i', 's' }),
+        ['<C-j>'] = cmp.mapping(function()
+          luasnip.change_choice(1)
+        end, { 'i', 's' }),
+        ['<C-k>'] = cmp.mapping(function()
+          luasnip.change_choice(1)
         end, { 'i', 's' }),
 
         -- optional formattings settings
