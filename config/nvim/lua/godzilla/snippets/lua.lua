@@ -30,11 +30,36 @@ local ms = ls.multi_snippet
 local k = require('luasnip.nodes.key_indexer').new_key
 
 local function com(str)
-  return t('-- ' .. str)
+  return t('-- ' .. (str or ''))
 end
 
 local function lb()
   return t { '', '' }
+end
+
+local alphabet = 'abcdefghijklmnopqrstuvwxyz'
+
+local function getargnodes(args, _, old_state)
+  old_state = old_state or {
+    updates = 0,
+  }
+
+  old_state.updates = old_state.updates + 1
+  local nodes = {}
+  local num = tonumber(args[1])
+  if num == nil then
+    nodes[#nodes + 1] = t 'nothin'
+  else
+    for j = 1, num, 1 do
+      nodes[#nodes + 1] = i(j, alphabet[j])
+      nodes[#nodes + 1] = lb()
+    end
+  end
+
+  local snip = sn(nil, nodes)
+
+  snip.old_state = old_state
+  return snip
 end
 
 -- collection of test snippets
@@ -74,6 +99,10 @@ ls.add_snippets('lua', {
     t("basically just text "),
     i(1, "And an insertNode.")
   })),
+  s("dynxample", {
+    i(1, "change to update"),
+    d(2, getargnodes, {1})
+  })
 })
 
 -- snippetnodes are useful for nodes which require a single node but you want to add multiple
