@@ -41,7 +41,6 @@ local function tab()
   return t '\t'
 end
 
-ls.cleanup()
 ls.add_snippets('go', {
   -- godoc
   -- function
@@ -119,13 +118,13 @@ ls.add_snippets('go', {
 
   -- testing
   s('test', {
-    t 'func ',
+    t 'func Test',
     i(1, '<test_name>'),
     t '(t *testing.T) {',
     lb(),
     tab(),
     i(2),
-    lb().t '}',
+    lb(), t '}',
     lb(),
     i(0),
   }),
