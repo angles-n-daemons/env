@@ -40,7 +40,7 @@ map('i', '.', '.<c-g>u')
 map('i', ';', ';<c-g>u')
 
 -- save file
-map({ 'x', 'n', 's' }, '<C-w>', '<cmd>w<cr><esc>', { desc = 'Save File' })
+map({ 'x', 'n', 's' }, '<C-s>', '<cmd>w<cr><esc>', { desc = 'Save File' })
 -- close buffer
 local function countListedBuffers()
   local bufs = vim.api.nvim_list_bufs()

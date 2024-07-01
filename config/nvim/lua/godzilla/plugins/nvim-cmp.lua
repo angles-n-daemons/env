@@ -82,11 +82,10 @@ return { -- Autocompletion
             luasnip.jump(-1)
           end
         end, { 'i', 's' }),
-        ['<C-j>'] = cmp.mapping(function()
-          luasnip.change_choice(1)
-        end, { 'i', 's' }),
-        ['<C-k>'] = cmp.mapping(function()
-          luasnip.change_choice(1)
+        ['<S-Tab>'] = cmp.mapping(function()
+          if ls.choice_active() then
+            luasnip.change_choice(1)
+          end
         end, { 'i', 's' }),
 
         -- optional formattings settings
