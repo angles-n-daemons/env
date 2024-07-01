@@ -1,5 +1,5 @@
 SETTINGS = require 'godzilla.config.settings'()
-FORTUNES = require('godzilla.util.fortune').loadFortunes ()
+FORTUNES = require('godzilla.util.fortune').loadFortunes()
 
 require 'godzilla.config.options'
 require 'godzilla.config.keymaps'

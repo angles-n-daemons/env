@@ -69,5 +69,12 @@ ls.add_snippets('lua', {
     i(1, 'p1'), t ' ',
     i(2, 'p2'), t ' ',
     i(3, 'p3'), t ' ',
-  })
+  }),
+  s("snippetnode", sn(1, {
+    t("basically just text "),
+    i(1, "And an insertNode.")
+  })),
 })
+
+-- snippetnodes are useful for nodes which require a single node but you want to add multiple
+-- dynamicnode holds a function which returns a snippetnode

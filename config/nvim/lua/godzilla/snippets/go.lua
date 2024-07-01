@@ -115,6 +115,37 @@ ls.add_snippets('go', {
     lb(),
   }),
 
+  -- error handling
+
+  -- testing
+  s('test', {
+    t 'func ',
+    i(1, '<test_name>'),
+    t '(t *testing.T) {',
+    lb(),
+    tab(),
+    i(2),
+    lb().t '}',
+    lb(),
+    i(0),
+  }),
+
+  s('tErr', {
+    t 'if ',
+    i(1, '<condition>'),
+    t ' {',
+    lb(),
+    tab(),
+    t 't.Fatalf("',
+    i(2),
+    t ')',
+    lb(),
+
+    t '}',
+    lb(),
+    i(0),
+  }),
+
   -- for i := 0; i < 10; i++ {
   --	sum += i
   --}
