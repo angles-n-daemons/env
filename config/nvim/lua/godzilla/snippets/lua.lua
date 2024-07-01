@@ -59,5 +59,15 @@ ls.add_snippets('lua', {
       t('  return '), i(2), lb(),
       t('end')
     })
+  }),
+  s("choice", c(1, {
+    t("Ugh boring, a text node"),
+    i(nil, "At least I can edit something now..."),
+    f(function(args) return "Still only counts as text!!" end, {})
+  })),
+  s('placeholders', {
+    i(1, 'p1'), t ' ',
+    i(2, 'p2'), t ' ',
+    i(3, 'p3'), t ' ',
   })
 })

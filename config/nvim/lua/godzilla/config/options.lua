@@ -10,3 +10,6 @@ vim.g.maplocalleader = '\\'
 
 -- Minimum number of screen lines to keep above and below cursor
 vim.opt.scrolloff = 5
+
+-- Max popup height options
+vim.o.pumheight = 15

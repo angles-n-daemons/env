@@ -78,12 +78,12 @@ return { -- Autocompletion
           if luasnip.jumpable(1) then
             luasnip.jump(1)
           end
-        end, { 'i' }),
+        end, { 'i', 's' }),
         ['<C-h>'] = cmp.mapping(function()
           if luasnip.jumpable(-1) then
             luasnip.jump(-1)
           end
-        end, { 'i' }),
+        end, { 'i', 's' }),
 
         -- optional formattings settings
 
