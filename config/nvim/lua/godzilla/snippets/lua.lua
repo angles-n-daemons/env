@@ -37,7 +37,49 @@ local function lb()
   return t { '', '' }
 end
 
-local alphabet = 'abcdefghijklmnopqrstuvwxyz'
+local alphabet = {
+  'a',
+  'b',
+  'c',
+  'd',
+  'e',
+  'f',
+  'g',
+  'h',
+  'i',
+  'j',
+  'k',
+  'l',
+  'm',
+  'n',
+  'o',
+  'p',
+  'q',
+  'r',
+  's',
+  't',
+  'u',
+  'v',
+  'w',
+  'x',
+  'y',
+  'z',
+}
+
+local function count(args, _, old_state)
+  old_state = old_state or {
+    updates = 0,
+  }
+
+  old_state.updates = old_state.updates + 1
+
+  local snip = sn(nil, {
+    t(tostring(old_state.updates)),
+  })
+
+  snip.old_state = old_state
+  return snip
+end
 
 local function getargnodes(args, _, old_state)
   old_state = old_state or {
@@ -45,8 +87,9 @@ local function getargnodes(args, _, old_state)
   }
 
   old_state.updates = old_state.updates + 1
-  local nodes = {}
-  local num = tonumber(args[1])
+  local nodes = { lb() }
+  local num = tonumber(args[1][2])
+
   if num == nil then
     nodes[#nodes + 1] = t 'nothin'
   else
@@ -59,6 +102,15 @@ local function getargnodes(args, _, old_state)
   local snip = sn(nil, nodes)
 
   snip.old_state = old_state
+  return snip
+end
+
+local function existingArgNodes(args, _, old_state)
+  local nodes = { com() }
+  for j = 2, #args[1] - 1 do
+    nodes[#nodes + 1] = t(args[1][j] .. ',')
+  end
+  local snip = sn(nil, nodes)
   return snip
 end
 
@@ -100,10 +152,13 @@ ls.add_snippets('lua', {
     i(1, "And an insertNode.")
   })),
   s("dynxample", {
+    d(3, existingArgNodes, {2}),
+    lb(),
     i(1, "change to update"),
-    d(2, getargnodes, {1})
-  })
+    d(2, getargnodes, {1}),
+  }),
+ s("dyncount", {
+            i(1, "change to update"),
+            d(2, count, {1})
+        })
 })
-
--- snippetnodes are useful for nodes which require a single node but you want to add multiple
--- dynamicnode holds a function which returns a snippetnode
