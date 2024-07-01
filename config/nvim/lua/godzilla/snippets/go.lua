@@ -108,7 +108,7 @@ ls.add_snippets('go', {
     t '++ {',
     lb(),
     t '\t',
-    i(3, '<body>'),
+    i(3),
     lb(),
     t '}',
     lb(),
@@ -124,7 +124,8 @@ ls.add_snippets('go', {
     lb(),
     tab(),
     i(2),
-    lb(), t '}',
+    lb(),
+    t '}',
     lb(),
     i(0),
   }),
@@ -137,7 +138,7 @@ ls.add_snippets('go', {
     tab(),
     t 't.Fatalf("',
     i(2),
-    t ')',
+    t '")',
     lb(),
 
     t '}',
@@ -145,7 +146,6 @@ ls.add_snippets('go', {
     i(0),
   }),
 
-  -- for i := 0; i < 10; i++ {
-  --	sum += i
-  --}
+  -- Test suite?
+  -- Benchmark?
 })

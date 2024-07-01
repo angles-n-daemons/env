@@ -36,12 +36,28 @@ return { -- Autocompletion
     -- See `:help cmp`
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
+    local types = require 'luasnip.util.types'
     luasnip.config.setup {
       store_selection_keys = '<Tab>',
       history = true,
       updateevents = 'TextChanged,TextChangedI',
       enable_autosnippets = true, -- unsure if this is worthe keeping
-      ext_opts = {},
+      ext_opts = {
+        [types.insertNode] = {
+          active = {
+            hl_group = 'CurSearch',
+          },
+          passive = {
+            virt_text = { { ' ', 'DiffAdd' } },
+          },
+          visited = {
+            hl_group = 'DiffText',
+          },
+          unvisited = {
+            hl_group = 'DiffText',
+          },
+        },
+      },
     }
 
     cmp.setup {

@@ -66,30 +66,11 @@ local alphabet = {
   'z',
 }
 
-local function count(args, _, old_state)
-  old_state = old_state or {
-    updates = 0,
-  }
-
-  old_state.updates = old_state.updates + 1
-
-  local snip = sn(nil, {
-    t(tostring(old_state.updates)),
-  })
-
-  snip.old_state = old_state
-  return snip
-end
-
-local function getargnodes(args, _, old_state)
-  old_state = old_state or {
-    updates = 0,
-  }
-
-  old_state.updates = old_state.updates + 1
+local function getargnodes(args)
   local nodes = { lb() }
   local num = tonumber(args[1][2])
 
+  vim.print('num', num)
   if num == nil then
     nodes[#nodes + 1] = t 'nothin'
   else
@@ -101,11 +82,10 @@ local function getargnodes(args, _, old_state)
 
   local snip = sn(nil, nodes)
 
-  snip.old_state = old_state
   return snip
 end
 
-local function existingArgNodes(args, _, old_state)
+local function existingArgNodes(args)
   local nodes = { com() }
   for j = 2, #args[1] - 1 do
     nodes[#nodes + 1] = t(args[1][j] .. ',')
@@ -157,8 +137,9 @@ ls.add_snippets('lua', {
     i(1, "change to update"),
     d(2, getargnodes, {1}),
   }),
- s("dyncount", {
-            i(1, "change to update"),
-            d(2, count, {1})
-        })
 })
+
+-- I can probably think up some highlight groups to use for these
+-- What happens if there's nothing to highlight
+-- Nothing shows up, might be worth adding virtual text instead of placeholders to insert nodes
+-- Or not who cares
