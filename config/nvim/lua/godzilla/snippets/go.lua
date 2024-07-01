@@ -46,7 +46,13 @@ ls.add_snippets('go', {
   -- function
   -- struct function
   -- error exit
-  -- ternary
+  -- conditional variable value
+  -- var $1 $2
+  -- if $3 {
+  --   $1 = $4
+  -- } else {
+  --   $1 = $5
+  -- }
   s('?var', {
     t 'var ',
     i(1, '<varname>'),
@@ -74,6 +80,13 @@ ls.add_snippets('go', {
     t '}',
     i(0),
   }),
+
+  -- conditional return value
+  -- if $1 {
+  --   return $2
+  -- } else {
+  --    $3
+  -- }
   s('?return', {
     t 'if ',
     i(1, '<condition>'),
@@ -95,6 +108,9 @@ ls.add_snippets('go', {
   }),
 
   -- for loops
+  -- for ${1:i} := 0; i < $2; i++ {
+  --   $3
+  -- }
   s('for', {
     t 'for ',
     i(1, 'i'),
@@ -116,7 +132,10 @@ ls.add_snippets('go', {
 
   -- error handling
 
-  -- testing
+  -- test
+  -- func Test$1(t testing.T) {
+  --    $2
+  -- }
   s('test', {
     t 'func Test',
     i(1, '<test_name>'),
@@ -130,6 +149,10 @@ ls.add_snippets('go', {
     i(0),
   }),
 
+  -- test error
+  -- if $1 {
+  --   t.Fatalf("$2")
+  -- }
   s('tErr', {
     t 'if ',
     i(1, '<condition>'),
@@ -141,6 +164,35 @@ ls.add_snippets('go', {
     t '")',
     lb(),
 
+    t '}',
+    lb(),
+    i(0),
+  }),
+
+  -- benchmark
+  -- fun Bench$1(b *testing.B) {
+  --   $2
+  --   for i := 0; i < b.N; i++ {
+  --     $3
+  --   }
+  -- }
+  s('bench', {
+    t 'func Bench',
+    i(1, '<bench_name>'),
+    t '(b *testing.B) {',
+    tab(),
+    i(2),
+    lb(),
+    tab(),
+    t 'for i := 0; i < b.N; i++ {',
+    lb(),
+    tab(),
+    tab(),
+    i(3),
+    lb(),
+    tab(),
+    t '}',
+    lb(),
     t '}',
     lb(),
     i(0),
