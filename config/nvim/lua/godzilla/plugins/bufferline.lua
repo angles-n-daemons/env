@@ -9,6 +9,7 @@ return {
     { '<leader>bp', '<Cmd>BufferLineTogglePin<CR>', desc = '[B]uffer [P]in' },
     { '<leader>bo', '<Cmd>BufferLineCloseOthers<CR>', desc = 'Delete Non-Pinned Buffers' },
     { '<leader>bd', '<Cmd>bp<bar>sp<bar>bn<bar>bd<CR>', desc = '[B]uffer [D]elete' },
+    { '<leader>bs', '<Cmd>vsplit<CR>', desc = '[B]uffer [S]plit' },
   },
   opts = {
     options = {
