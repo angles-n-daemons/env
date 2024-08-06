@@ -8,7 +8,7 @@ brew install fortune \
   tmuxp \
   zsh \
   git \
-  vim \
+  iterm2 \
   fortune \
   arc \
   neovim \
@@ -32,7 +32,6 @@ cp ./tmux/.tmux.conf ~/.tmux.conf
 cp -r ./config/nvim ~/.config
 
 # Install ttyd (ignored until font issue is resolved)
-# brew install ttyd
 # cp ./osx/LaunchAgents/ttyd.plist ~/Library/LaunchAgents/ttyd.plist
 # launchctl load ~/Library/LaunchAgents/ttyd.plist
 # launchctl start com.godzilla.ttyd
