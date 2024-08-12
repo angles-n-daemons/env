@@ -5,10 +5,10 @@ local parsers = { 'go', 'gomod', 'gosum', 'gotmpl', 'gowork' }
 local tools = {
   'gopls',
   'delve',
-  'goimports',
+  'crlfmt',
 }
 local formattersByFiletype = {
-  ['go'] = { 'goimports' },
+  ['go'] = { 'crlfmt' },
 }
 
 return {
