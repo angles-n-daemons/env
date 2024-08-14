@@ -37,12 +37,10 @@ return {
   {
     'nvim-neotest/neotest',
     dependencies = {
-      'nvim-neotest/neotest-go',
+      'nvim-neotest/neotest-golang',
     },
     opts = function(_, opts)
-      local adapter = require 'neotest-go' {
-        recursive_run = true,
-      }
+      local adapter = require 'neotest-golang' {}
       extendOptsList('adapters', { adapter })(_, opts)
     end,
   },
