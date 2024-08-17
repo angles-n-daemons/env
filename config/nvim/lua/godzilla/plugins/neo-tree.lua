@@ -61,6 +61,12 @@ return {
   },
   opts = {
     filesystem = {
+      window = {
+        mappings = {
+          -- disable fuzzy-finder
+          ['/'] = 'noop',
+        },
+      },
       bind_to_cwd = false,
       follow_current_file = { enabled = true },
       use_libuv_file_watcher = true,
