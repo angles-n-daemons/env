@@ -46,7 +46,7 @@ return {
       -- setup the installed lsps
       require('mason-lspconfig').setup_handlers {
         function(server_name) -- default handler (optional)
-          local lsp_opts = SETTINGS.lsp_opts
+          local lsp_opts = SETTINGS.lspOpts
           local opts = (lsp_opts and lsp_opts[server_name]) or {}
           require('lspconfig')[server_name].setup(opts)
         end,

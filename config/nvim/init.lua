@@ -1,4 +1,4 @@
-SETTINGS = require 'godzilla.config.settings'()
+SETTINGS = require 'godzilla.config.settings' ()
 FORTUNES = require('godzilla.util.fortune').loadFortunes()
 
 require 'godzilla.config.options'
@@ -27,6 +27,7 @@ spec 'godzilla.plugins.nvim-cmp'
 spec 'godzilla.plugins.nvim-dap'
 spec 'godzilla.plugins.nvim-lspconfig'
 spec 'godzilla.plugins.nvim-notify'
+spec 'godzilla.plugins.profile'
 spec 'godzilla.plugins.telescope'
 spec 'godzilla.plugins.toggleterm'
 spec 'godzilla.plugins.treesitter'

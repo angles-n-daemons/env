@@ -17,9 +17,16 @@ return function()
   local settings = readFileJSON '.godzilla/nvim.json' or {}
 
   -- Override variables from environment
+  -- language override
   local envLang = os.getenv 'LANGUAGE'
   if envLang ~= nil then
     settings.language = envLang
+  end
+
+  -- large project override
+  local largeProject = os.getenv 'LARGE_PROJECT'
+  if largeProject == 'true' then
+    settings.largeProject = true
   end
 
   return settings

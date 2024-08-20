@@ -1,3 +1,5 @@
+local extendOptsTable = require('godzilla.util.opts').extendOptsTable
+
 return {
   'nvim-neotest/neotest',
   dependencies = {
@@ -74,6 +76,15 @@ return {
     })
   end,
   config = function(_, opts)
+    if SETTINGS.largeProject then
+      opts.discovery = {
+        enabled = false,
+        concurrent = 1,
+      }
+      opts.running = {
+        concurrent = true,
+      }
+    end
     require('neotest').setup(opts)
   end,
 }
