@@ -1,4 +1,4 @@
-SETTINGS = require 'godzilla.config.settings' ()
+SETTINGS = require 'godzilla.config.settings'()
 FORTUNES = require('godzilla.util.fortune').loadFortunes()
 
 require 'godzilla.config.options'
@@ -7,6 +7,7 @@ require 'godzilla.config.autocmds'
 
 -- Plugin imports
 local spec = require('godzilla.util.spec').spec
+spec 'godzilla.plugins.blame'
 spec 'godzilla.plugins.bufferline'
 spec 'godzilla.plugins.colors'
 spec 'godzilla.plugins.language' -- variable based on language setting
