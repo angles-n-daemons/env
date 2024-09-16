@@ -8,6 +8,7 @@ local function configureDapSessionKeys(dap)
     { 'd', dap.down, desc = 'Debug: Down' },
     { 'u', dap.up, desc = 'Debug: Up' },
     { 'b', dap.toggle_breakpoint, desc = 'Debug: Toggle Breakpoint' },
+    { 'b', dap.run_to_cursor, desc = 'Debug: Run to Cursor' },
   }
 
   local function setSessionKeys()
