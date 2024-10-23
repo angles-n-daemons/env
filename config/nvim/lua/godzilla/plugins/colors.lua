@@ -15,13 +15,25 @@ local colorConfigs = {
   lua = { 'folke/tokyonight.nvim', config = setColorScheme 'tokyonight' },
   cpp = { 'zortax/three-firewatch', config = setColorScheme 'three-firewatch' },
 }
+local colorConfigsList = {
+  colorConfigs.default,
+  colorConfigs.python,
+  colorConfigs.go,
+  colorConfigs.typescript,
+  colorConfigs.lua,
+  colorConfigs.cpp,
+}
 -- additional colorschemes
 -- melange
 -- PaperColor
 -- okcolors
 -- miikanissi/modus-themes.nvim
 
-local color = colorConfigs[SETTINGS.language] or colorConfigs.default
+-- local color = colorConfigs[SETTINGS.language] or colorConfigs.default
+
+-- new approach, choose a color at random
+math.randomseed(os.time())
+local color = colorConfigsList[math.random(#colorConfigsList)]
 color.lazy = false
 color.priority = 1000
 
