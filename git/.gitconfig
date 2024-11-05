@@ -5,4 +5,4 @@
 	excludesFile = ~/.gitignore
 	editor = nvim
 [branch]
-	sort = committerdate
+	sort = -committerdate
