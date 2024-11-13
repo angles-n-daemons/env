@@ -78,7 +78,7 @@ return {
     local DIR = require('godzilla.config.settings').DIR
     local launchjsFile = DIR .. 'launch.json'
     if exists(launchjsFile) then
-      dap.load_launchjs(launchjsFile)
+      require('dap.ext.vscode').load_launchjs(launchjsFile)
     end
 
     -- configure signs
