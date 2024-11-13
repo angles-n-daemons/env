@@ -1,3 +1,5 @@
+local DIR = '.godzilla/'
+
 local function readFileJSON(filename)
   local resolved_path = (vim.fn.getcwd() .. '/' .. filename)
   if not vim.loop.fs_stat(resolved_path) then
@@ -13,8 +15,8 @@ local function readFileJSON(filename)
   return assert(vim.json.decode(contents), 'nvim.json must contain a JSON object')
 end
 
-return function()
-  local settings = readFileJSON '.godzilla/nvim.json' or {}
+local function load()
+  local settings = readFileJSON(DIR .. 'nvim.json') or {}
 
   -- Override variables from environment
   -- language override
@@ -31,3 +33,8 @@ return function()
 
   return settings
 end
+
+return {
+  load = load,
+  DIR = DIR,
+}

@@ -1,4 +1,4 @@
-SETTINGS = require 'godzilla.config.settings'()
+SETTINGS = require('godzilla.config.settings').load()
 FORTUNES = require('godzilla.util.fortune').loadFortunes()
 
 require 'godzilla.config.options'

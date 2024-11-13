@@ -54,16 +54,7 @@ return {
       config = true,
     },
     config = function()
-      require('dap-go').setup {
-        dap_configurations = {
-          {
-            type = 'go',
-            name = 'Debug main.go',
-            request = 'launch',
-            program = '${workspaceFolder}/cmd/main.go',
-          },
-        },
-      }
+      require('dap-go').setup {}
     end,
   },
 }

@@ -13,6 +13,12 @@ local function isModuleMissingError(err)
   return string.find(firstLine, 'not found') ~= nil
 end
 
+local function fileExists(name)
+  local f = io.open(name, 'r')
+  return f ~= nil and io.close(f)
+end
+
 return {
   isModuleMissingError = isModuleMissingError,
+  fileExists = fileExists,
 }

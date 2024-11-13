@@ -1,3 +1,13 @@
+local function convertProcessIdToInt(oldConfig)
+  local config = vim.deepcopy(oldConfig)
+  if config.processId == '${command:pickProcess}' then
+    config.processId = require('dap.utils').pick_process()
+  elseif type(config.processId) == 'string' then
+    config.processId = tonumber(oldConfig.processId)
+  end
+  return config
+end
+
 local function configureDapSessionKeys(dap)
   local keys = {
     { 'n', dap.step_over, desc = 'Debug: Step Over' },
@@ -57,8 +67,19 @@ return {
     local dap, dapui = require 'dap', require 'dapui'
     dapui.setup()
 
+    -- convert processId values to integer
+    dap.listeners.on_config['custom.processIdToInt'] = convertProcessIdToInt
+
     -- highlight current line
     vim.api.nvim_set_hl(0, 'DapStoppedLine', { default = true, link = 'Visual' })
+
+    -- load launch.json if exists
+    local exists = require('godzilla.util.file').fileExists
+    local DIR = require('godzilla.config.settings').DIR
+    local launchjsFile = DIR .. 'launch.json'
+    if exists(launchjsFile) then
+      dap.load_launchjs(launchjsFile)
+    end
 
     -- configure signs
     vim.fn.sign_define(
