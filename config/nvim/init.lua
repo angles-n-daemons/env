@@ -13,6 +13,7 @@ spec 'godzilla.plugins.colors'
 spec 'godzilla.plugins.language' -- variable based on language setting
 spec 'godzilla.plugins.conform'
 spec 'godzilla.plugins.copilot'
+spec 'godzilla.plugins.copilot-chat'
 spec 'godzilla.plugins.dashboard-vim'
 spec 'godzilla.plugins.dressing'
 spec 'godzilla.plugins.flash'
