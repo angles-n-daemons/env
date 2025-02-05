@@ -6,9 +6,13 @@ local function openChat()
   copilot().open()
 end
 
-local function copilotActions()
+local function promptAction()
   local actions = require 'CopilotChat.actions'
   require('CopilotChat.integrations.telescope').pick(actions.prompt_actions())
+end
+
+local function selectModel()
+  require('CopilotChat').select_model()
 end
 
 return {
@@ -39,12 +43,17 @@ return {
       {
         mode = { 'n', 'v' },
         '<leader>aa',
-        copilotActions,
+        promptAction,
         desc = 'Copilot [A]ctions',
       },
       {
         '<leader>ac',
         '<cmd>CopilotChatCommit<cr>',
+        desc = 'Copilot [C]ommit',
+      },
+      {
+        '<leader>am',
+        selectModel,
         desc = 'Copilot [C]ommit',
       },
     },
