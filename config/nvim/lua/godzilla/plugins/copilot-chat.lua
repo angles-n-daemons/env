@@ -35,7 +35,7 @@ return {
       contexts = {
         jeeves = {
           resolve = function()
-            require('jeeves').collect_context()
+            return require('jeeves').collect_context()
           end,
         },
       },
