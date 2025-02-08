@@ -32,6 +32,13 @@ return {
           insert = '<C-r>',
         },
       },
+      contexts = {
+        jeeves = {
+          resolve = function()
+            require('jeeves').collect_context()
+          end,
+        },
+      },
     },
     config = function(_, opts)
       -- prevent autoinserting into copilot windows
