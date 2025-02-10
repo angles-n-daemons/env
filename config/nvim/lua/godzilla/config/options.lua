@@ -13,3 +13,6 @@ vim.opt.scrolloff = 5
 
 -- Max popup height options
 vim.o.pumheight = 15
+
+-- Default vertical splits right
+vim.o.splitright = true
