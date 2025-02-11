@@ -65,9 +65,6 @@ return {
         enabled = false,
         open = false,
       },
-      output_panel = {
-        open = 'rightbelow vsplit',
-      },
       status = {
         enabled = true,
         virtual_text = false,
