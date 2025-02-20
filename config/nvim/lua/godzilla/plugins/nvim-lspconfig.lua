@@ -48,6 +48,12 @@ return {
         function(server_name) -- default handler (optional)
           local lsp_opts = SETTINGS.lspOpts
           local opts = (lsp_opts and lsp_opts[server_name]) or {}
+
+          -- manual patch for clangd to remove protobuf from the defaults
+          if server_name == 'clangd' then
+            opts.filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' }
+          end
+
           require('lspconfig')[server_name].setup(opts)
         end,
       }

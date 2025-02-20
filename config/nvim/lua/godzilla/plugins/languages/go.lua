@@ -6,9 +6,11 @@ local tools = {
   'gopls',
   'delve',
   'crlfmt',
+  'buf',
 }
 local formattersByFiletype = {
   ['go'] = { 'crlfmt' },
+  ['proto'] = { 'buf' },
 }
 
 return {
