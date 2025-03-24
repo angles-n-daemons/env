@@ -21,10 +21,25 @@ local function toggleProfile()
   end
 end
 
+local function fiveSecondProfile()
+  -- Start profiling
+  toggleProfile()
+
+  -- Notify user that profiling has started
+  vim.notify 'Profiling started. Will run for 5 seconds...'
+
+  -- Schedule stopping the profile after 5 seconds
+  vim.defer_fn(function()
+    toggleProfile()
+    vim.notify 'Profiling completed after 5 seconds'
+  end, 5000)
+end
+
 return {
   'stevearc/profile.nvim',
   lazy = true,
   keys = {
     { '<leader>PP', toggleProfile, desc = 'Toggle Profile' },
+    { '<leader>P5', fiveSecondProfile, desc = 'Five second profile' },
   },
 }

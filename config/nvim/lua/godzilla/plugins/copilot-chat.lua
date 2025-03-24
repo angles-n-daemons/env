@@ -24,7 +24,7 @@ return {
     },
     build = 'make tiktoken',
     opts = {
-      model = 'gpt-4o',
+      model = 'claude-3.7-sonnet-thought',
       mappings = {
         -- Overriding the default keybindings to avoid collision with window jumping
         reset = {

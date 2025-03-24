@@ -198,6 +198,18 @@ ls.add_snippets('go', {
     i(0),
   }),
 
+  -- jp
+  -- b, _ := json.MarshalIndent($1, "", "  "); fmt.Println("$2", string(b))
+  s('jp', {
+    t 'b, _ := json.MarshalIndent(',
+    i(1, '<object>'),
+    t ', "", "  "); fmt.Println("',
+    i(2, '<tag>'),
+    t '", string(b))',
+    lb(),
+    i(0),
+  }),
+
   -- Test suite?
   -- Benchmark?
 })
