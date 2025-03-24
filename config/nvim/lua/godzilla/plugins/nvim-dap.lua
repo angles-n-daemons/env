@@ -16,7 +16,7 @@ local function configureDapSessionKeys(dap)
     { 'c', dap.continue, desc = 'Debug: Continue' },
     { 'q', dap.terminate, desc = 'Debug: Terminate' },
     { 'D', dap.disconnect, desc = 'Debug: Disconnect' },
-    { 'D', dap.down, desc = 'Debug: Down' },
+    { 'd', dap.down, desc = 'Debug: Down' },
     { 'u', dap.up, desc = 'Debug: Up' },
     { 'b', dap.toggle_breakpoint, desc = 'Debug: Toggle Breakpoint' },
     { 'r', dap.run_to_cursor, desc = 'Debug: Run to Cursor' },
