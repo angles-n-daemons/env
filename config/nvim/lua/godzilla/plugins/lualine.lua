@@ -1,5 +1,5 @@
 local isBuildRunning = require('godzilla.jobs.build-status').isBuildRunning
-local buildText = require('godzilla.util.spinner').spinner 'BUILDING'
+local buildSpinner = require 'godzilla.util.spinner' 'BUILDING'
 
 return {
   'nvim-lualine/lualine.nvim',
@@ -8,14 +8,12 @@ return {
   config = function(_, opts)
     require('lualine').setup {
       sections = {
-        -- custom build status indicator
         lualine_c = {
+          -- custom build indicator
           {
-            function()
-              return buildText()
-            end,
-            color = { fg = '#ff0000' },
+            buildSpinner,
             cond = isBuildRunning,
+            color = 'WarningMsg', -- Try this format for named colors
           },
         },
         lualine_y = {

@@ -1,14 +1,5 @@
 local spinner = function(text)
-  local frames = {
-    '[------] ',
-    '[>-----] ',
-    '[=>----] ',
-    '[==>---] ',
-    '[===>--] ',
-    '[====>-] ',
-    '[=====>] ',
-    '[======] ',
-  }
+  local frames = { '', '', '', '', '', '' }
   local current = 1
   return function()
     local frame = frames[current]
@@ -20,6 +11,4 @@ local spinner = function(text)
   end
 end
 
-return {
-  spinner = spinner,
-}
+return spinner
