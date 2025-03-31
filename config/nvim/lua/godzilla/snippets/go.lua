@@ -169,6 +169,23 @@ ls.add_snippets('go', {
     i(0),
   }),
 
+  -- trun
+  -- t.Run("$1", func(t *testing.T) {
+  --    $2
+  -- })
+  s('trun', {
+    t 't.Run("',
+    i(1, '<test_name>'),
+    t '", func(t *testing.T) {',
+    lb(),
+    tab(),
+    i(2),
+    lb(),
+    t '})',
+    lb(),
+    i(0),
+  }),
+
   -- benchmark
   -- fun Bench$1(b *testing.B) {
   --   $2
