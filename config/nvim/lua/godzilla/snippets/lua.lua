@@ -70,7 +70,6 @@ local function getargnodes(args)
   local nodes = { lb() }
   local num = tonumber(args[1][2])
 
-  vim.print('num', num)
   if num == nil then
     nodes[#nodes + 1] = t 'nothin'
   else

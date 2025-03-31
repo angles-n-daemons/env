@@ -31,6 +31,12 @@ local function load()
     settings.largeProject = true
   end
 
+  -- check building command
+  local devBuild = os.getenv 'DEV_BUILD'
+  if devBuild ~= nil then
+    settings.devBuild = devBuild
+  end
+
   return settings
 end
 
