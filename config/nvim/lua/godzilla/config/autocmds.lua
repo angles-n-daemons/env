@@ -7,7 +7,7 @@ local function setActivePaneLines(line, column)
   end
 end
 vim.api.nvim_create_autocmd({ 'BufEnter' }, {
-  callback = setActivePaneLines(true, '80'),
+  callback = setActivePaneLines(true, '60'),
 })
 vim.api.nvim_create_autocmd({ 'BufLeave' }, {
   callback = setActivePaneLines(false, ''),
