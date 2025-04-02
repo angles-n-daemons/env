@@ -227,6 +227,29 @@ ls.add_snippets('go', {
     i(0),
   }),
 
-  -- Test suite?
-  -- Benchmark?
+  -- qq
+  -- func qq(s string, args ...any) {
+  -- 	 tempDir := os.TempDir()
+  --   file, _ := os.OpenFile(tempDir+"/q", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+  --   defer file.Close()
+
+  --   text := fmt.Sprintf(s, args...)
+  --   file.WriteString(text)
+  -- }
+  s('qq', {
+    t 'func qq(s string, args ...any) {',
+    lb(),
+    t '  tempDir := os.TempDir()',
+    lb(),
+    t '  file, _ := os.OpenFile(tempDir+"/q", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)',
+    lb(),
+    t '  defer file.Close()',
+    lb(),
+    t '  text := fmt.Sprintf(s, args...)',
+    lb(),
+    t '  file.WriteString(text)',
+    lb(),
+    t '}',
+    i(0),
+  }),
 })
