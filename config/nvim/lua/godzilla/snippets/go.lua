@@ -247,7 +247,7 @@ ls.add_snippets('go', {
     lb(),
     t '  defer file.Close()',
     lb(),
-    t '  text := fmt.Sprintf(s, args...)',
+    t '  text := fmt.Sprintf(s+"\\n", args...)',
     lb(),
     t '  _, err = file.WriteString(text)',
     lb(),
