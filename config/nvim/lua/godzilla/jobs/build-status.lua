@@ -3,9 +3,13 @@ local buildRunning = false
 -- Use an anchored regex so we only match processes whose command line
 -- *starts* with "./dev"
 local function set_build_running(_, data, __)
-  if #data == 0 or #data[1] == 0 then
-    buildRunning = false
-  elseif string.find(data[1], 'command not found') then
+  local nooutput = #data == 0 or #data[1] == 0
+  local notfound = #data > 0 and string.find(data[1], 'command not found')
+  if nooutput or notfound then
+    -- going from building to not building
+    if buildRunning then
+      vim.notify('Build completed.', vim.log.levels.WARN)
+    end
     buildRunning = false
   else
     buildRunning = true
