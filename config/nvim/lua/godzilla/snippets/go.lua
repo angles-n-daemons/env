@@ -28,6 +28,13 @@ local types = require 'luasnip.util.types'
 local parse = require('luasnip.util.parser').parse_snippet
 local ms = ls.multi_snippet
 local k = require('luasnip.nodes.key_indexer').new_key
+local function mul(inp)
+  local res = {}
+  for line in inp:gmatch '[^\r\n]+' do
+    vim.list_extend(res, { line })
+  end
+  return t(res)
+end
 
 local function com(str)
   return t('-- ' .. str)
@@ -228,32 +235,45 @@ ls.add_snippets('go', {
   }),
 
   -- qq
-  -- func qq(s string, args ...any) {
-  -- 	 tempDir := os.TempDir()
-  --   file, _ := os.OpenFile(tempDir+"/q", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-  --   defer file.Close()
-
-  --   text := fmt.Sprintf(s, args...)
-  --   file.WriteString(text)
+  -- func qq(args ...any) {
+  -- 	tempDir := os.TempDir()
+  -- 	file, err := os.OpenFile(tempDir+"/q", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+  -- 	if err != nil {
+  -- 		panic(err)
+  -- 	}
+  -- 	defer file.Close()
+  -- 	templateArr := []string{}
+  -- 	for range args {
+  -- 		templateArr = append(templateArr, "%v")
+  -- 	}
+  -- 	template := strings.Join(templateArr, " ") + "\n"
+  -- 	text := fmt.Sprintf(template, args...)
+  -- 	_, err = file.WriteString(text)
+  -- 	if err != nil {
+  -- 		panic(err)
+  -- 	}
   -- }
   s('qq', {
-    t 'func qq(s string, args ...any) {',
-    lb(),
-    t '  tempDir := os.TempDir()',
-    lb(),
-    t '  file, err := os.OpenFile(tempDir+"/q", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)',
-    lb(),
-    t '  if err != nil { panic(err) }',
-    lb(),
-    t '  defer file.Close()',
-    lb(),
-    t '  text := fmt.Sprintf(s+"\\n", args...)',
-    lb(),
-    t '  _, err = file.WriteString(text)',
-    lb(),
-    t '  if err != nil { panic(err) }',
-    lb(),
-    t '}',
+    mul [[
+      func qq(args ...any) {
+      	tempDir := os.TempDir()
+      	file, err := os.OpenFile(tempDir+"/q", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+      	if err != nil {
+      		panic(err)
+      	}
+      	defer file.Close()
+      	templateArr := []string{}
+      	for range args {
+      		templateArr = append(templateArr, "%v")
+      	}
+      	template := strings.Join(templateArr, " ") + "\n"
+      	text := fmt.Sprintf(template, args...)
+      	_, err = file.WriteString(text)
+      	if err != nil {
+      		panic(err)
+      	}
+      }
+    ]],
     i(0),
   }),
 })
