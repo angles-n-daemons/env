@@ -1,3 +1,5 @@
+local telescope = require 'godzilla.util.telescope'
+
 local exploreCwd = function()
   require('neo-tree.command').execute { toggle = true, dir = vim.uv.cwd() }
 end
@@ -17,6 +19,21 @@ end
 
 local exploreBuffers = function()
   require('neo-tree.command').execute { source = 'buffers', toggle = true }
+end
+
+local getCursorDir = function(node)
+  local f = io.open(node.id, 'r')
+  if not f then
+    return '.'
+  end
+  local _, _, code = f:read(1)
+  f:close()
+
+  if code == 21 then
+    return node.id
+  else
+    return node._parent_id
+  end
 end
 
 -- <bs> - navigates working directory up
@@ -65,6 +82,12 @@ return {
         mappings = {
           -- disable fuzzy-finder
           ['/'] = 'noop',
+          ['F'] = {
+            function(state)
+              require('telescope.builtin').live_grep { cwd = getCursorDir(state.tree:get_node()) }
+            end,
+            desc = 'Search in current directory.',
+          },
         },
       },
       bind_to_cwd = false,
