@@ -1,3 +1,14 @@
+local cmp_enabled = true
+local function toggleCmp()
+  if cmp_enabled then
+    require('cmp').setup.buffer { enabled = false }
+    cmp_enabled = false
+  else
+    require('cmp').setup.buffer { enabled = true }
+    cmp_enabled = true
+  end
+end
+
 return { -- Autocompletion
   'hrsh7th/nvim-cmp',
   event = 'InsertEnter',
@@ -31,6 +42,9 @@ return { -- Autocompletion
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-buffer',
+  },
+  keys = {
+    { '<leader>uc', toggleCmp, desc = '[T]oggle Autocompletion' },
   },
   config = function()
     -- See `:help cmp`
