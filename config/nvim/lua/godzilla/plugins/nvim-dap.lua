@@ -74,6 +74,9 @@ return {
     -- highlight current line
     vim.api.nvim_set_hl(0, 'DapStoppedLine', { default = true, link = 'Visual' })
 
+    -- remove default options for go
+    dap.configurations.go = {}
+
     -- load launch.json if exists
     local exists = require('godzilla.util.file').fileExists
     local DIR = require('godzilla.config.settings').DIR
