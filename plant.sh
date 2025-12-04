@@ -9,12 +9,11 @@ brew install fortune \
   zsh \
   git \
   iterm2 \
-  fortune \
   arc \
   neovim \
   font-fira-code-nerd-font \
   ripgrep \
-  # ttyd\
+  ttyd\
 
 # Setup zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -32,6 +31,6 @@ cp ./tmux/.tmux.conf ~/.tmux.conf
 cp -r ./config/nvim ~/.config
 
 # Install ttyd (ignored until font issue is resolved)
-# cp ./osx/LaunchAgents/ttyd.plist ~/Library/LaunchAgents/ttyd.plist
-# launchctl load ~/Library/LaunchAgents/ttyd.plist
-# launchctl start com.godzilla.ttyd
+cp ./osx/LaunchAgents/ttyd.plist ~/Library/LaunchAgents/ttyd.plist
+launchctl load ~/Library/LaunchAgents/ttyd.plist
+launchctl start com.godzilla.ttyd
