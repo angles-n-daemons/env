@@ -13,7 +13,7 @@ brew install fortune \
   neovim \
   font-fira-code-nerd-font \
   ripgrep \
-  ttyd\
+  ttyd
 
 # Setup zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
